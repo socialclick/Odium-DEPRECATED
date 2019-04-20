@@ -27,7 +27,7 @@ module.exports.init = fs => {
 
 global.guild = function(id, settings) {};
 
-global.send = function(channel, type, text, title, fields) {
+global.send = function(channel, type,  title, text, fields) {
 	var color;
 
 	switch (type) {
@@ -35,6 +35,7 @@ global.send = function(channel, type, text, title, fields) {
 			color = 0x0092ed;
 			break;
 		case "error":
+			title = "error: " + title;
 			color = 0xdd2c2c;
 			break;
 		default:
@@ -44,7 +45,8 @@ global.send = function(channel, type, text, title, fields) {
 
 	var message = new Discord.RichEmbed()
 		.setColor(color)
-		.setTitle("Fehler: " + title)
+		.setTitle(title)
+		.setDescription(text)
 		.setAuthor(`${message.guild.name}`, message.guild.iconURL)
 		.setFooter(
 			bot.user.username + " Bot coded by NaCl-y#4400 & Flam3rboy#5979",
