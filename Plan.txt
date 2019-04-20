@@ -13,7 +13,7 @@
     -nutzer aktivität
     -partner system
     -Music bot
-      -bewerbungs system
+    -bewerbungs system
     -custom pannel
     -server stats
 

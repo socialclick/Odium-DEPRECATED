@@ -2,16 +2,23 @@ module.exports.init = () => {
 	console.log("Welcome initalized");
 
 	client.on("guildMemberAdd", member => {
-		const channel = member.guild.channels.find(ch => ch.name === 'welcome');
-		
-		let owner = member.guild.owner
+		const channel = member.guild
+			._sortedChannels()
+			.find(ch => ch.type === "text");
 
-		if (!channel){
-			send(owner, "error","Welcome Message", "welcome channel does not exist, please create one!");
+		let owner = member.guild.owner;
 
-			return console.log("Cnl not found")
-		};
-	
+		if (!channel) {
+			send(
+				owner,
+				"error",
+				"Welcome Message",
+				"welcome channel does not exist, please create one!"
+			);
+
+			return console.log("Cnl not found");
+		}
+
 		channel.send(`Welcome to the server, ${member}`);
-	})
+	});
 };
