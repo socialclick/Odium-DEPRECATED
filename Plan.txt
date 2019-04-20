@@ -4,12 +4,12 @@
     -say command
     -meme befehl
     -report System
-    -ban, clear, help, mute, kick
+    -ban, clear, help, mute, kick, warn
     -leave msg
     -tryout
           
   Samuel:
-    -if chnl full --> new chnl ✅
+    -channelcreation ✅
     -nutzer aktivität
     -partner system
     -Music bot ✅
@@ -17,6 +17,19 @@
     -custom admin panel
     -server stats
 ____________________
-other functions:
-fn bot
 
+other functions:
+-fn bot
+-serverinfo
+-roleinfo
+-userinfo
+-botinfo
+-reaction creation
+-backup
+-anti grief/hack
+-levelsystem
+-dice/coninflip
+-randomuser
+-about/donate
+-stats
+-setprefix
