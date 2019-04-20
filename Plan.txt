@@ -1,6 +1,6 @@
-Funktionen: 
+﻿Funktionen: 
   Matteo: 
-    -welcome msg
+    -welcome msg ✅
     -say command
     -meme befehl
     -report System
