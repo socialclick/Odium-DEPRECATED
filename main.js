@@ -1,8 +1,13 @@
-var Discord = require("discord.js");
+global.Discord = require("discord.js");
+global.Util = require("discord.js");
 global.client = new Discord.Client();
 var fs = require("fs");
 var config = require("./botconfig.json");
 var basic = require("./basic");
+global.YouTube = require("simple-youtube-api");
+global.ytdl = require("ytdl-core");
+
+global.youtube = new YouTube("AIzaSyAz1Vni_d5yFCAa27zavInnfa6wV3KbrFo");
 
 client.commands = new Discord.Collection();
 client.extra = new Discord.Collection();

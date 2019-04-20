@@ -14,7 +14,7 @@
     -partner system
     -Music bot
     -bewerbungs system
-    -custom pannel
+    -custom admin panel
     -server stats
 
 ____________________

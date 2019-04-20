@@ -30,13 +30,20 @@ global.guild = function(id, settings) {};
 global.send = function(channel, type, title, text, fields) {
 	var color;
 
+	type = type.toLowerCase();
+
 	switch (type) {
 		case "help":
+			title = "Help: " + title;
 			color = 0x0092ed;
 			break;
 		case "error":
-			title = "error: " + title;
+			title = "Error: " + title;
 			color = 0xdd2c2c;
+			break;
+		case "success":
+			title = "Success: " + title;
+			color = 0x05af10;
 			break;
 		default:
 			color = 0x707070;
@@ -47,10 +54,10 @@ global.send = function(channel, type, title, text, fields) {
 		.setColor(color)
 		.setTitle(title)
 		.setDescription(text)
-		.setAuthor(`${message.guild.name}`, message.guild.iconURL)
+		.setAuthor(`${channel.guild.name}`, channel.guild.iconURL)
 		.setFooter(
-			bot.user.username + " Bot coded by NaCl-y#4400 & Flam3rboy#5979",
-			bot.user.displayAvatarURL
+			client.user.username + " Bot coded by NaCl-y#4400 & Flam3rboy#5979",
+			client.user.displayAvatarURL
 		);
 
 	message.fields = fields;
