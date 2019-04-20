@@ -5,6 +5,7 @@ var config = require("./botconfig.json");
 var basic = require("./basic");
 
 client.commands = new Discord.Collection();
+client.extra = new Discord.Collection();
 
 client.on("ready", () => {
 	basic.init();

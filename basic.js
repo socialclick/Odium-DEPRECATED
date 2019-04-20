@@ -10,6 +10,19 @@ module.exports.init = fs => {
 			bot.commands.set(f.replace(".js", ""), props);
 		});
 	});
+
+	fs.readdir(__dirname + "/extra/", {}, (err, file) => {
+		if (err) console.error(err);
+
+		var jsfile = file.filter(f => f.split(".").pop() === "js");
+
+		jsfile.forEach((f, i) => {
+			let props = require(__dirname + "/extra/" + f);
+			console.log(f + " loaded!");
+			bot.extra.set(f.replace(".js", ""), props);
+			props.init();
+		});
+	});
 };
 
 global.guild = function(id, settings) {};
