@@ -1,0 +1,25 @@
+Funktionen: 
+  Matteo: 
+      -welcome msg
+        -say command
+          -meme befehl
+          -report System
+          -ban, clear, help, mute, kick
+            -leave msg
+
+  -if chnl full --> new chnl
+  -nutzer aktivität
+  -partner system
+  -Music bot
+
+  -moderation
+    -Support system
+    -report System
+    -tryout
+    -ban, clear, help, mute, kick
+    
+  -server stats
+  -fn bot
+  -bewerbungs system
+  -custom pannel
+  
