@@ -12,6 +12,8 @@ client.on("ready", () => {
 	console.log(`Logged in as ${client.user.tag}`);
 });
 
+basic(fs);
+
 client.on("message", message => {
 	if (message.author.bot) return;
 	if (message.channel.type === "dm")
