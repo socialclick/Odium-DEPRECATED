@@ -22,6 +22,8 @@ client.on("message", message => {
 	let messageArray = message.content.split(" ");
 	let cmd = messageArray[0].toLowerCase();
 	let args = messageArray.slice(1);
+
+	client.commands.get(cmd).run(message, args);
 });
 
 client.login(config.token);
