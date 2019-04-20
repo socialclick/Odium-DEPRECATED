@@ -1,0 +1,2 @@
+# Odium
+Discord.js Bot
