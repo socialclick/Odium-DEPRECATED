@@ -7,7 +7,7 @@ module.exports.init = fs => {
 		jsfile.forEach((f, i) => {
 			let props = require(__dirname + "/commands/" + f);
 			console.log(f + " loaded!");
-			bot.commands.set(f.replace(".js", ""), props);
+			client.commands.set(f.replace(".js", ""), props);
 		});
 	});
 
@@ -19,7 +19,7 @@ module.exports.init = fs => {
 		jsfile.forEach((f, i) => {
 			let props = require(__dirname + "/extra/" + f);
 			console.log(f + " loaded!");
-			bot.extra.set(f.replace(".js", ""), props);
+			client.extra.set(f.replace(".js", ""), props);
 			props.init();
 		});
 	});
@@ -27,7 +27,7 @@ module.exports.init = fs => {
 
 global.guild = function(id, settings) {};
 
-global.send = function(channel, type,  title, text, fields) {
+global.send = function(channel, type, title, text, fields) {
 	var color;
 
 	switch (type) {
