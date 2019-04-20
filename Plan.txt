@@ -9,14 +9,13 @@
     -tryout
           
   Samuel:
-    -if chnl full --> new chnl
+    -if chnl full --> new chnl ✅
     -nutzer aktivität
     -partner system
-    -Music bot
+    -Music bot ✅
     -bewerbungs system
     -custom admin panel
     -server stats
-
 ____________________
 other functions:
 fn bot

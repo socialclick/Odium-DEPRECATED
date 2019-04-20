@@ -35,7 +35,7 @@ global.send = function(channel, type, title, text, fields) {
 	switch (type) {
 		case "help":
 			title = "Help: " + title;
-			color = 0x0092ed;
+			color = 0x8900f2;
 			break;
 		case "error":
 			title = "Error: " + title;
@@ -44,6 +44,10 @@ global.send = function(channel, type, title, text, fields) {
 		case "success":
 			title = "Success: " + title;
 			color = 0x05af10;
+			break;
+		case "info":
+			title = "Info: " + title;
+			color = 0x0087ff;
 			break;
 		default:
 			color = 0x707070;
