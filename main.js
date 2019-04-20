@@ -1,14 +1,25 @@
 var Discord = require("discord.js");
-global.client = new Discord.Client();
+global.bot = new Discord.bot();
 var fs = require("fs");
-var config = require("./botconfig.json");
+var botconfig = require("./botconfig.json");
+var config = require("./config.json");
 var basic = require("./basic");
 
-client.commands = new Discord.Collection();
+bot.commands = new Discord.Collection();
 
-client.on("ready", () => {
-	basic.init();
-	console.log(`Logged in as ${client.user.tag}`);
+basic.init(fs);
+
+bot.on("ready", () => {
+	console.log(`Logged in as ${bot.user.tag}`);
 });
 
-client.login(config.token);
+bot.on("message", msg => {
+	if (msg.author.bot) return;
+
+	var args = msg.split(" ");
+	var cmd = args[0].toLowerCase();
+
+	bot.commands.get(cmd).run(msg, args.slice(1));
+});
+
+bot.login(botconfig.token);

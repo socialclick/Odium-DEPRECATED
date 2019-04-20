@@ -1,7 +1,12 @@
-module.exports.command = new command(
-	"stats",
-	[new parmater("user", true, user)],
-	0
-);
+module.exports.run = (msg, args) => {
+	console.log("standard stats command ");
+};
 
-function user(msg, args) {}
+module.exports.help = {
+	help: "stats",
+	description: "Updates the Server stats"
+};
+
+module.exports.settings = {
+	categoryName: "Server stats"
+};
