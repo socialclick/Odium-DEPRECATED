@@ -8,11 +8,10 @@ client.commands = new Discord.Collection();
 client.extra = new Discord.Collection();
 
 client.on("ready", () => {
-	basic.init();
 	console.log(`Logged in as ${client.user.tag}`);
 });
 
-basic(fs);
+basic.init(fs);
 
 client.on("message", message => {
 	if (message.author.bot) return;
