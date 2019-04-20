@@ -20,9 +20,9 @@ client.on("message", message => {
 			"Die Befehle dieses Bots sind nicht für Privatnachrichten ausgelegt"
 		);
 
-	let prefix = Prefix;
+	let prefix = "!";
 	let messageArray = message.content.split(" ");
-	let cmd = messageArray[0].toLowerCase();
+	let cmd = messageArray[0].toLowerCase().slice(prefix.length);
 	let args = messageArray.slice(1);
 
 	client.commands.get(cmd).run(message, args);
