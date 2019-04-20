@@ -1,24 +1,23 @@
 Funktionen: 
-
   Matteo: 
-      -welcome msg
-        -say command
-          -meme befehl
-          -report System
-          -ban, clear, help, mute, kick
-          -leave msg
-          -tryout
+    -welcome msg
+    -say command
+    -meme befehl
+    -report System
+    -ban, clear, help, mute, kick
+    -leave msg
+    -tryout
           
   Samuel:
     -if chnl full --> new chnl
     -nutzer aktivität
     -partner system
     -Music bot
-     -bewerbungs system
+      -bewerbungs system
     -custom pannel
     -server stats
 
-
 ____________________
-      -fn bot
+other functions:
+fn bot
 
