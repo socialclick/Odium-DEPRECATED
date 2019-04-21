@@ -1,9 +1,11 @@
 global.Discord = require("discord.js");
 global.Util = require("discord.js");
+var express = require("express");
 global.client = new Discord.Client();
 var fs = require("fs");
 var config = require("./botconfig.json");
 var basic = require("./basic");
+var web = require("./web");
 global.YouTube = require("simple-youtube-api");
 global.ytdl = require("ytdl-core");
 
@@ -17,6 +19,7 @@ client.on("ready", () => {
 });
 
 basic.init(fs);
+web.init(express);
 
 client.on("message", message => {
 	if (message.author.bot) return;
