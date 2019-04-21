@@ -8,6 +8,7 @@ var basic = require("./basic");
 var web = require("./web");
 global.YouTube = require("simple-youtube-api");
 global.ytdl = require("ytdl-core");
+global.randomPuppy = require("random-puppy");
 
 global.youtube = new YouTube("AIzaSyAz1Vni_d5yFCAa27zavInnfa6wV3KbrFo");
 
