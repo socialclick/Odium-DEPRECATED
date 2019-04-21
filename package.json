@@ -1,19 +1,36 @@
 {
-  "name": "odium",
-  "version": "1.0.0",
-  "description": "Discord.js Bot",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/NaCl-y1/Odium.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/NaCl-y1/Odium/issues"
-  },
-  "homepage": "https://github.com/NaCl-y1/Odium#readme"
+	"name": "odium",
+	"version": "1.0.0",
+	"description": "Discord.js Bot",
+	"main": "main.js",
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/NaCl-y1/Odium.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/NaCl-y1/Odium/issues"
+	},
+	"dependencies": {
+		"react": "^16.8.6",
+		"react-dom": "^16.8.6",
+		"react-scripts": "2.1.8"
+	},
+	"homepage": "https://github.com/NaCl-y1/Odium#readme",
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not ie <= 11",
+		"not op_mini all"
+	]
 }
