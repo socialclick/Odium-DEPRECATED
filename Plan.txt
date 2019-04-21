@@ -5,7 +5,7 @@
     -meme befehl
     -report System
     -ban, clear, help, mute, kick, warn
-    -leave msg
+    -leave msg ✅
     -tryout
           
   Samuel:
