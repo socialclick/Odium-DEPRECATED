@@ -20,10 +20,7 @@ ____________________
 
 other functions:
 -fn bot
--serverinfo
--roleinfo
--userinfo
--botinfo
+-info (user, server, role, bot)
 -reaction creation
 -backup
 -anti grief/hack
@@ -32,4 +29,4 @@ other functions:
 -randomuser
 -about/donate
 -stats
--setprefix
+-prefix (set, get)
