@@ -50,9 +50,5 @@ module.exports.run = async function(msg, args) {
 
 module.exports.help = {
 	description: "Displays all Commands",
-<<<<<<< HEAD
 	help: "``!help [command]``"
-=======
-	help: "``help [command]``"
->>>>>>> 343b9b5868cfdfd1f0e0a8c61f4a5d61d4054bca
 };
