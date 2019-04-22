@@ -18,7 +18,6 @@ module.exports.run = (msg, args) => {
 				.then(msg => msg.delete(3000));
 		});
 	}
-
 	let clearEmbed = new Discord.RichEmbed()
 		.setDescription("~clear~")
 		.setColor("#7289DA")
@@ -30,14 +29,13 @@ module.exports.run = (msg, args) => {
 			client.user.username + " Bot coded by NaCl-y#4400 & Flam3rboy#5979",
 			client.user.displayAvatarURL
 		);
-
-	let clearhannel = msg.guild.channels.find(`name`, "report");
+	let clearchannel = msg.guild.channels.find(`name`, "report");
 	if (!clearchannel) return msg.guild.createChannel("report", "text");
 
 	clearchannel.send(clearEmbed);
 };
 
 module.exports.help = {
-	help: "",
-	description: ""
+	help: "clear",
+	description: "deletes msg ``!clear [amount]``"
 };
