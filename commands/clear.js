@@ -2,11 +2,11 @@ module.exports.run = (msg, args) => {
 	console.log("clear");
         //command
         //clear msg
-        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("nope u cant do that");
-        if(!args[0]) return message.channel.send("Please specify the amount of messages to delate!");
+        if(!msg.member.hasPermission("MANAGE_MESSAGES")) return msg.reply("nope u cant do that");
+        if(!args[0]) return msg.channel.send("Please specify the amount of messages to delate!");
 
-        message.channel.bulkDelete(args[0]).then(() => {
-            message.channel.send(`Cleared ${args[0]} Messages!`).then(msg => msg.delete(3000));
+        msg.channel.bulkDelete(args[0]).then(() => {
+            msg.channel.send(`Cleared ${args[0]} Messages!`).then(msg => msg.delete(3000));
         });
 
         let clearEmbed = new Discord.RichEmbed()
@@ -21,14 +21,14 @@ module.exports.run = (msg, args) => {
 			client.user.displayAvatarURL
 		);
     
-        let clearhannel = message.guild.channels.find(`name`, "report");
-        if(!clearchannel) return message.guild.createChannel("report", "text");
+        let clearchannel = msg.guild.channels.find(`name`, "report");
+        if(!clearchannel) return msg.guild.createChannel("report", "text");
 
         clearchannel.send(clearEmbed)
     
 };
 
 module.exports.help = {
-	help: "",
-	description: ""
+	help: "clear",
+	description: "deletes msg ``!clear [amount]``"
 };
