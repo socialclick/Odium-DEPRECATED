@@ -14,6 +14,8 @@ global.ytdl = require("ytdl-core");
 global.jsonfile = require("jsonfile");
 global.randomPuppy = require("random-puppy");
 
+global.prefix = "!";
+
 global.youtube = new YouTube("AIzaSyAz1Vni_d5yFCAa27zavInnfa6wV3KbrFo");
 
 client.commands = new Discord.Collection();
@@ -33,7 +35,6 @@ client.on("message", message => {
 			"Die Befehle dieses Bots sind nicht für Privatnachrichten ausgelegt"
 		);
 
-	let prefix = "!";
 	let messageArray = message.content.split(" ");
 	let cmd = messageArray[0].toLowerCase().slice(prefix.length);
 	let args = messageArray.slice(1);

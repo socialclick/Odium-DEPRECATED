@@ -34,10 +34,10 @@ module.exports.run = async function(msg, args) {
 						embed: {
 							color: 0x0000ff,
 							title: "Hilfe: " + args[0],
-							description:
-								command.help.help +
-								"\n" +
-								command.help.description
+							description: command.help.help,
+							author: {
+								name: command.help.description
+							}
 						}
 					})
 					.catch(e => {
@@ -49,6 +49,6 @@ module.exports.run = async function(msg, args) {
 };
 
 module.exports.help = {
-	description: "Display all Commands",
+	description: "Displays all Commands",
 	help: "``!help [command]``"
 };
