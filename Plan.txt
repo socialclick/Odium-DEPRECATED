@@ -21,7 +21,7 @@ ____________________
 
 other functions:
 -fn bot
--info (user, server, role, bot)
+-info (user, server, role, bot)  ✅
 -reaction creation
 -backup
 -anti grief/hack
