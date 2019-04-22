@@ -1,8 +1,8 @@
 ﻿Funktionen: 
   Matteo: 
     -welcome msg ✅
-    -say command
-    -meme befehl
+    -say command ✅
+    -meme befehl ✅
     -report System
     -ban, clear, help, mute, kick, warn
     -leave msg ✅
