@@ -2,7 +2,7 @@ module.exports.run = (msg, args) => {
 	console.log("ping");
 
 	return msg.channel.send(
-		"Ping: " + client.ping + " ms."
+		"Ping: " + Math.round(client.ping) + " ms."
 	);
 };
 

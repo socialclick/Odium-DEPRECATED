@@ -15,6 +15,7 @@ module.exports.run = (msg, args) => {
 		})
 		.catch(err => console.error(err));
 };
+
 module.exports.help = {
 	help: "",
 	description: "Shows memes from r/dankmemes r/ich_iel"

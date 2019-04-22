@@ -3,8 +3,9 @@
     -welcome msg ✅
     -say command ✅
     -meme befehl ✅
-    -report System
-    -ban, clear, help, mute, kick, warn
+    -report System ✅
+    -ban, clear, help, kick, warn ✅
+    -mute 
     -leave msg ✅
     -tryout
           
