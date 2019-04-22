@@ -10,7 +10,7 @@ module.exports.run = async function(msg, args) {
 				});
 			});
 
-			message.channel.send({
+			msg.channel.send({
 				embed: {
 					color: 0x0000ff,
 					title: "Commands:",
@@ -22,14 +22,14 @@ module.exports.run = async function(msg, args) {
 			var command = client.commands.get(args[0]);
 
 			if (command == undefined) {
-				message.channel.send({
+				msg.channel.send({
 					embed: {
 						color: 0x0000ff,
 						title: "Hilfe: Unbekannter Command: " + args[0]
 					}
 				});
 			} else {
-				message.channel
+				msg.channel
 					.send({
 						embed: {
 							color: 0x0000ff,
