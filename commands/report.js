@@ -1,5 +1,5 @@
 module.exports.run = (msg, args) => {
-	console.log("");
+	console.log("report");
     //command
         //report
 
@@ -15,7 +15,10 @@ module.exports.run = (msg, args) => {
             .addField("channel", message.channel)
             .addField("time", message.createdAt)
             .addField("Reason", reason)
-            .addField(".", `Made by : ${Twitter}`);
+            .setFooter(
+                client.user.username + " Bot coded by NaCl-y#4400 & Flam3rboy#5979",
+                client.user.displayAvatarURL
+            );
             
             let reportschannel = message.guild.channels.find(`name`, "report");
             if(!reportschannel) return message.guild.createChannel("report", "text");
