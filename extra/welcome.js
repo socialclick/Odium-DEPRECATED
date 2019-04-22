@@ -10,9 +10,6 @@ module.exports.init = () => {
 
 		if (!channel) {
 			return message.guild.createChannel("welcome", "text");
-		
-
-			return console.log("Cnl not found");
 		};
 
 		channel.send(`Welcome to the server, ${member}`);
