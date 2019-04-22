@@ -15,6 +15,7 @@ class App extends Component {
 		super(props);
 
 		this.login = this.login.bind(this);
+		this.invite = this.invite.bind(this);
 	}
 
 	state = {};
@@ -25,9 +26,21 @@ class App extends Component {
 			"https://discordapp.com/oauth2/authorize?response_type=code&client_id=159985415099514880&redirect_uri=https%3A%2F%2Fmee6.xyz%2Fapi%2Fdiscord-callback&scope=identify+guilds+email&state=allqJ0T3RePtYc1Vx0asdmKUEt8u1q",
 			"windowOpenTab",
 			"resizable=1,height=800,width=500,left=" +
-				window.screen.availWidth / 2 +
+				(window.innerWidth / 2 + 400) +
 				",top=" +
-				window.screen.availHeight / 2
+				window.innerHeight / 2
+		);
+	}
+
+	invite() {
+		console.log(this);
+		var win = window.open(
+			"https://discordapp.com/api/oauth2/authorize?client_id=569201129691283497&permissions=0&scope=bot",
+			"windowOpenTab",
+			"resizable=1,height=800,width=500,left=" +
+				(window.innerWidth / 2 + 400) +
+				",top=" +
+				window.innerHeight / 2
 		);
 	}
 
@@ -37,11 +50,12 @@ class App extends Component {
 				<header className="App-header">
 					<h1 className="">Odium</h1>
 					<img src={logo} className="App-logo m-4" alt="logo" />
-					<p>
-						Edit <code>src/App.js</code> and save to reload.
-					</p>
 					<Button onClick={this.login} size="lg">
 						Login with Discord
+					</Button>
+					<br />
+					<Button variant="secondary" onClick={this.invite}>
+						Invite to Server
 					</Button>
 				</header>
 			</div>

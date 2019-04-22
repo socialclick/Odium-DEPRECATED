@@ -1,16 +1,20 @@
 global.Discord = require("discord.js");
 global.Util = require("discord.js");
 global.client = new Discord.Client();
+global.config = require("./config.json");
+var botconfig = require("./botconfig.json");
 var fs = require("fs");
 var request = require("request");
 var http = require("http");
 var express = require("express");
-var config = require("./botconfig.json");
 var basic = require("./basic");
 var web = require("./web");
 global.YouTube = require("simple-youtube-api");
 global.ytdl = require("ytdl-core");
+global.jsonfile = require("jsonfile");
 global.randomPuppy = require("random-puppy");
+
+global.prefix = "!";
 
 global.youtube = new YouTube("AIzaSyAz1Vni_d5yFCAa27zavInnfa6wV3KbrFo");
 
@@ -32,7 +36,6 @@ client.on("message", message => {
 			"Die Befehle dieses Bots sind nicht für Privatnachrichten ausgelegt"
 		);
 
-	let prefix = "!";
 	let messageArray = message.content.split(" ");
 	let cmd = messageArray[0].toLowerCase().slice(prefix.length);
 	let args = messageArray.slice(1);
@@ -42,4 +45,4 @@ client.on("message", message => {
 	}
 });
 
-client.login(config.token);
+client.login(botconfig.token);
