@@ -9,6 +9,13 @@ module.exports.run = (msg, args) => {
 	if (u != undefined) {
 		title = u.username;
 		thumbnail = u.displayAvatarURL;
+		try {
+			var lastMessage = new Date(
+				u.lastMessage.createdTimestamp
+			).toGMTString();
+		} catch (e) {
+			lastMessage = "none";
+		}
 		fields = [
 			{
 				name: "Username",
@@ -32,7 +39,7 @@ module.exports.run = (msg, args) => {
 			},
 			{
 				name: "Last Message",
-				value: new Date(u.lastMessage.createdTimestamp).toGMTString(),
+				value: lastMessage,
 				inline: true
 			},
 			{
