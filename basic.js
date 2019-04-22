@@ -23,11 +23,20 @@ module.exports.init = fs => {
 			props.init();
 		});
 	});
+
+	setInterval(() => {
+		jsonfile
+			.writeFile(__dirname + "/config.json", config)
+			.then(res => {
+				console.log("Saved config");
+			})
+			.catch(error => console.error(error));
+	}, 1000 * 60 * 5);
 };
 
 global.guild = function(id, settings) {};
 
-global.send = function(channel, type, title, text, fields) {
+global.send = function(channel, type, title, text, fields, thumbnail) {
 	var color;
 
 	type = type.toLowerCase();
@@ -57,6 +66,7 @@ global.send = function(channel, type, title, text, fields) {
 	var message = new Discord.RichEmbed()
 		.setColor(color)
 		.setTitle(title)
+		.setThumbnail(thumbnail)
 		.setDescription(text)
 		.setAuthor(`${channel.guild.name}`, channel.guild.iconURL)
 		.setFooter(
@@ -66,5 +76,5 @@ global.send = function(channel, type, title, text, fields) {
 
 	message.fields = fields;
 
-	return channel.send(message);
+	return channel.send(message).catch(e => console.log(e));
 };
