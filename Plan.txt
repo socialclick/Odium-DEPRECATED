@@ -30,3 +30,4 @@ other functions:
 -about/donate
 -stats
 -prefix (set, get)
+-log (einstellen)
