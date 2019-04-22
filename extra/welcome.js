@@ -7,7 +7,7 @@ module.exports.init = () => {
 			.find(ch => ch.type === "text");
 
 		if (!channel) {
-			return message.guild.createChannel("welcome", "text");
+			return msg.guild.createChannel("welcome", "text");
 		};
 
 		channel.send(`Welcome to the server, ${member}`);

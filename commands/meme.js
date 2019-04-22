@@ -6,12 +6,10 @@ module.exports.run = (msg, args) => {
 	let subreddit = reddit[num];
 	let reddit = ["dankmemes", "ich_iel"];
 
-	message.channel.startTyping();
+	msg.channel.startTyping();
 	randomPuppy(subreddit)
 		.then(async url => {
-			await message.channel
-				.send(url)
-				.then(() => message.channel.stopTyping());
+			await msg.channel.send(url).then(() => msg.channel.stopTyping());
 		})
 		.catch(err => console.error(err));
 };
