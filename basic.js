@@ -23,6 +23,15 @@ module.exports.init = fs => {
 			props.init();
 		});
 	});
+
+	setInterval(() => {
+		jsonfile
+			.writeFile(__dirname + "/config.json", config)
+			.then(res => {
+				console.log("Saved config");
+			})
+			.catch(error => console.error(error));
+	}, 1000 * 60 * 5);
 };
 
 global.guild = function(id, settings) {};
