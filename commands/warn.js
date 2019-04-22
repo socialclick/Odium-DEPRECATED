@@ -1,8 +1,7 @@
 module.exports.run = (msg, args) => {
-	console.log("");
+	console.log("warn");
     //command
     //report
-    if(cmd === `${prefix}warn`){
         let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         if(!rUser) return message.channel.send("Couldn´t find user.");
         let reason = args.join(" ").slice(22);
@@ -25,9 +24,6 @@ module.exports.run = (msg, args) => {
 
         message.delete().catch(O_o=>{});
         reportschannel.send(reportEmbed);
-        return;
-
-    }
 };
 
 module.exports.help = {
