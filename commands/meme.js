@@ -22,6 +22,7 @@ module.exports.run = (msg, args) => {
         await message.channel.send(url).then(() => message.channel.stopTyping());
     }).catch(err => console.error(err));
 };
+
 module.exports.help = {
 	help: "",
 	description: "Shows memes from r/dankmemes r/ich_iel"

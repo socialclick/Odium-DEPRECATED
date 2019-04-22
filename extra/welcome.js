@@ -9,15 +9,11 @@ module.exports.init = () => {
 		let owner = member.guild.owner;
 
 		if (!channel) {
-			send(
-				owner,
-				"error",
-				"Welcome Message",
-				"welcome channel does not exist, please create one!"
-			);
+			return message.guild.createChannel("welcome", "text");
+		
 
 			return console.log("Cnl not found");
-		}
+		};
 
 		channel.send(`Welcome to the server, ${member}`);
 	});
