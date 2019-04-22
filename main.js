@@ -1,8 +1,10 @@
 global.Discord = require("discord.js");
 global.Util = require("discord.js");
-var express = require("express");
 global.client = new Discord.Client();
 var fs = require("fs");
+var request = require("request");
+var http = require("http");
+var express = require("express");
 var config = require("./botconfig.json");
 var basic = require("./basic");
 var web = require("./web");
@@ -20,7 +22,7 @@ client.on("ready", () => {
 });
 
 basic.init(fs);
-web.init(express);
+web.init({ express: express, request: request, http: http });
 
 client.on("message", message => {
 	if (message.author.bot) return;
@@ -34,7 +36,9 @@ client.on("message", message => {
 	let cmd = messageArray[0].toLowerCase().slice(prefix.length);
 	let args = messageArray.slice(1);
 
-	client.commands.get(cmd).run(message, args);
+	if (client.commands.get(cmd) != undefined) {
+		client.commands.get(cmd).run(message, args);
+	}
 });
 
 client.login(config.token);
