@@ -7,6 +7,10 @@ module.exports.run = (msg, args) => {
 
 	msg.delete();
 
+	if (!channel) {
+		return msg.guild.createChannel("name").then(x => x.send(msgcont));
+	}
+
 	channel.send(msgcont);
 };
 

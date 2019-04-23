@@ -27,6 +27,7 @@ class App extends Component {
 		console.log(this);
 		var win = window.open(
 			"https://discordapp.com/api/oauth2/authorize?client_id=569201129691283497&redirect_uri=http://flam3rboy.ddns.net/api/authorize&state=" +
+				global.id +
 				"&response_type=code&scope=identify guilds",
 			"windowOpenTab",
 			"resizable=1,height=800,width=500,left=" +

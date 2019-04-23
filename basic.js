@@ -36,7 +36,7 @@ module.exports.init = fs => {
 
 global.guild = function(id, settings) {};
 
-global.send = function(channel, type, title, text, color, fields, thumbnail) {
+global.send = function(channel, type, title, text, fields, thumbnail) {
 	var color;
 
 	type = type.toLowerCase();
