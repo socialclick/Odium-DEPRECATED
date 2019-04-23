@@ -8,6 +8,10 @@ socket.on("connect", function() {
 
 socket.on("data", function(data) {
 	console.log(data);
+	if (data.error) {
+		alert(error.description);
+	} else {
+	}
 });
 
 socket.on("disconnect", function() {});
