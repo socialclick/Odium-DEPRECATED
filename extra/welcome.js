@@ -1,6 +1,4 @@
 module.exports.init = () => {
-	console.log("Welcome initalized");
-
 	client.on("guildMemberAdd", member => {
 		const channel = member.guild
 			._sortedChannels()
@@ -8,7 +6,7 @@ module.exports.init = () => {
 
 		if (!channel) {
 			return msg.guild.createChannel("welcome", "text");
-		};
+		}
 
 		channel.send(`Welcome to the server, ${member}`);
 	});

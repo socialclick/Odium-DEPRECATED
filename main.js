@@ -7,6 +7,7 @@ var fs = require("fs");
 var request = require("request");
 var http = require("http");
 var express = require("express");
+var socket = require("socket.io");
 var basic = require("./basic");
 var web = require("./web");
 global.YouTube = require("simple-youtube-api");
@@ -23,11 +24,14 @@ client.extra = new Discord.Collection();
 
 client.on("ready", () => {
 	console.log(`Logged in as ${client.user.tag}`);
-	client.user.setActivity(`${Prefix}help | watching ${client.guilds.size} Servers`, {type: "WATCHING"});
+	client.user.setActivity(
+		`${prefix}help | watching ${client.guilds.size} Servers`,
+		{ type: "WATCHING" }
+	);
 });
 
 basic.init(fs);
-web.init({ express: express, request: request, http: http });
+web.init({ express: express, request: request, http: http, socket: socket });
 
 client.on("message", message => {
 	if (message.author.bot) return;

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import logo from "./bot_icon.png";
 import "./App.css";
+import { init } from "./client";
 
 import {
 	Button,
@@ -14,6 +15,8 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 
+		init();
+
 		this.login = this.login.bind(this);
 		this.invite = this.invite.bind(this);
 	}
@@ -23,7 +26,7 @@ class App extends Component {
 	login() {
 		console.log(this);
 		var win = window.open(
-			"https://discordapp.com/oauth2/authorize?response_type=code&client_id=159985415099514880&redirect_uri=https%3A%2F%2Fmee6.xyz%2Fapi%2Fdiscord-callback&scope=identify+guilds+email&state=allqJ0T3RePtYc1Vx0asdmKUEt8u1q",
+			"https://discordapp.com/api/oauth2/authorize?client_id=569201129691283497&redirect_uri=http://flam3rboy.ddns.net/api/authorize&response_type=code&scope=identify guilds",
 			"windowOpenTab",
 			"resizable=1,height=800,width=500,left=" +
 				(window.innerWidth / 2 + 400) +
