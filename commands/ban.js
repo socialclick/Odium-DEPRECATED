@@ -31,6 +31,8 @@ module.exports.run = (msg, args) => {
 		return;
 	};
 
+	
+
 	let bUser = msg.guild.member(
 		msg.mentions.users.first() || msg.guild.members.get(args[0])
 	);

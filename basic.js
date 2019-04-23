@@ -36,7 +36,7 @@ module.exports.init = fs => {
 
 global.guild = function(id, settings) {};
 
-global.send = function(channel, type, title, text, fields, thumbnail) {
+global.send = function(channel, type, title, text, color, fields, thumbnail) {
 	var color;
 
 	type = type.toLowerCase();
@@ -67,6 +67,7 @@ global.send = function(channel, type, title, text, fields, thumbnail) {
 		.setColor(color)
 		.setTitle(title)
 		.setThumbnail(thumbnail)
+		.setColor(color)
 		.setDescription(text)
 		.setAuthor(`${channel.guild.name}`, channel.guild.iconURL)
 		.setFooter(
