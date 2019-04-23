@@ -5,6 +5,6 @@ module.exports.run = (msg, args) => {
 };
 
 module.exports.help = {
-	help: "",
-	description: ""
+	help: "vote",
+	description: "Votes for the bot"
 };
