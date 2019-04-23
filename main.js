@@ -23,7 +23,10 @@ client.extra = new Discord.Collection();
 
 client.on("ready", () => {
 	console.log(`Logged in as ${client.user.tag}`);
-	client.user.setActivity(`${Prefix}help | watching ${client.guilds.size} Servers`, {type: "WATCHING"});
+	client.user.setActivity(
+		`${prefix}help | watching ${client.guilds.size} Servers`,
+		{ type: "WATCHING" }
+	);
 });
 
 basic.init(fs);

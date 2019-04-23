@@ -18,17 +18,26 @@ module.exports.run = (msg, args) => {
 				.then(msg => msg.delete(3000));
 		});
 	}
-	let clearEmbed = new Discord.RichEmbed()
-		.setDescription("~clear~")
-		.setColor("#7289DA")
-		.addField("Deleted Msg", `${args[0]}`)
-		.addField("Cleared by", `<@${msg.author.id}>`)
-		.addField("Cleared in", msg.channel)
-		.addField("time", msg.createdAt)
-		.setFooter(
-			client.user.username + " Bot coded by NaCl-y#4400 & Flam3rboy#5979",
-			client.user.displayAvatarURL
-		);
+
+	let time = new Date().toGMTString().slice(5, -4);
+
+	send(msg.channel, "info", "~clear~", undefined, undefined, [
+		{
+			name: "Cleared by",
+			value: "<@" + msg.author.id + ">"
+		},
+		{
+			name: "Cleared at",
+			value: time
+		},
+		{
+			name: "Cleared in channel",
+			value: "<#" + msg.channel + ">"
+		}
+	]);
+
+	// log("clear", undefined, undefined, args[0], msg.author.id, msg.channel);
+
 	let clearchannel = msg.guild.channels.find(`name`, "report");
 	if (!clearchannel) return msg.guild.createChannel("report", "text");
 
