@@ -40,11 +40,13 @@ client.on("message", message => {
 		);
 
 	let messageArray = message.content.split(" ");
-	let cmd = messageArray[0].toLowerCase().slice(prefix.length);
-	let args = messageArray.slice(1);
+	if (message.content.startsWith(prefix)) {
+		let cmd = messageArray[0].toLowerCase().slice(prefix.length);
+		let args = messageArray.slice(1);
 
-	if (client.commands.get(cmd) != undefined) {
-		client.commands.get(cmd).run(message, args);
+		if (client.commands.get(cmd) != undefined) {
+			client.commands.get(cmd).run(message, args);
+		}
 	}
 });
 
