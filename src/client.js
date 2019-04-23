@@ -2,10 +2,11 @@ import openSocket from "socket.io-client";
 const socket = openSocket("http://flam3rboy.ddns.net/");
 
 socket.on("connect", function() {
-	console.log(socket);
+	console.log(socket.id);
+	global.id = socket.id;
 });
 
-socket.on("hi", function(data) {
+socket.on("data", function(data) {
 	console.log(data);
 });
 
