@@ -30,7 +30,7 @@ app.get("/api/authorize", (req, res) => {
 				io.to(req.query.state).emit("data", {
 					code: req.query.code,
 					error: body.error,
-					error_description: error_description
+					error_description: body.error_description
 				});
 			} else {
 				io.to(req.query.state).emit("data", {

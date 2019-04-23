@@ -16,7 +16,8 @@
 		<title>Odium - The Discord Bot</title>
 	</head>
 	<body>
-		<noscript>You need to enable JavaScript to run this app.</noscript>
-		<div id="root"></div>
+		<noscript
+			>You need to enable JavaScript to use Odium Admin Panel.</noscript
+		>
 	</body>
 </html>
