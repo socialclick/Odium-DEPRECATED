@@ -40,8 +40,6 @@ module.exports.run = (msg, args) => {
 
 	let clearchannel = msg.guild.channels.find(`name`, "report");
 	if (!clearchannel) return msg.guild.createChannel("report", "text");
-
-	clearchannel.send(clearEmbed);
 };
 
 module.exports.help = {
