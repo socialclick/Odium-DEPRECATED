@@ -8,14 +8,13 @@ module.exports.run = (msg, args) => {
 		);
 		if (!rUser) return msg.channel.send("Couldn´t find user.");
 		let reason = args.join(" ").slice(22);
-		
+
 		log("warn", rUser.id, msg.author.id, msg.channel);
 
 		let warnchannel = msg.guild.channels.find(`name`, "report");
 		if (!warnchannel) return msg.guild.createChannel("report", "text");
 
 		msg.delete().catch(O_o => {});
-		reportschannel.send(reportEmbed);
 		return;
 	}
 
@@ -31,7 +30,6 @@ module.exports.run = (msg, args) => {
 	if (!warnchannel) return msg.guild.createChannel("report", "text");
 
 	msg.delete().catch(O_o => {});
-	reportschannel.send(reportEmbed);
 };
 
 module.exports.help = {

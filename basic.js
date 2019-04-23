@@ -75,7 +75,9 @@ global.send = function(channel, type, title, text, fields, thumbnail) {
 			client.user.displayAvatarURL
 		);
 
-	message.fields = fields;
+	if (fields) {
+		message.fields = fields;
+	}
 
 	return channel.send(message).catch(e => console.log(e));
 };

@@ -69,7 +69,8 @@ module.exports.run = (msg, args) => {
 				SEND_MESSAGES: false
 			});
 		});
-		return log("mute", User.id, msg.author.id, "nervt", msg.channel);
+
+		return log("mute", User.id, msg.author.id);
 	}
 };
 
