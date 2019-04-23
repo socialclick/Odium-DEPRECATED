@@ -1,5 +1,5 @@
 module.exports.run = (msg, args) => {
-	
+	send(msg.channel, "Invite", "Invite", "https://discord.gg/UV7KuEj");
 };
 
 module.exports.help = {
