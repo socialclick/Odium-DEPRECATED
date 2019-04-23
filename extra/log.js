@@ -22,6 +22,10 @@ global.log = function(type, user, mod, reason, msgchannel) {
 	let channel = msg.guild.channels.find(`name`, "report");
 	let time = new Date().toGMTString().slice(5, -4);
 
+	if (!channel) {
+		member.guild.createChannel("report", "text");
+	}
+
 	let fEmbed = new Discord.RichEmbed();
 	if (user) {
 		fEmbed.addField(type + " User:", `<@${user}>`);
