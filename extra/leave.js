@@ -1,4 +1,4 @@
-module.exports.init = (msg, args) => {
+module.exports.init = () => {
 	client.on("guildMemberRemove", member => {
 		const channel = member.guild.channels.find(x => x.name === "welcome");
 
