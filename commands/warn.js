@@ -8,19 +8,8 @@ module.exports.run = (msg, args) => {
 		);
 		if (!rUser) return msg.channel.send("Couldn´t find user.");
 		let reason = args.join(" ").slice(22);
-
-		let reportEmbed = new Discord.RichEmbed()
-			.setDescription("~Warn~")
-			.setColor("#ff6600")
-			.addField("Warned User", `${rUser} with ID: ${rUser.id}`)
-			.addField("Warned by", `${msg.author} with ID ${msg.author.id}`)
-			.addField("channel", msg.channel)
-			.addField("time", msg.createdAt)
-			.setFooter(
-				client.user.username +
-					" Bot coded by NaCl-y#4400 & Flam3rboy#5979",
-				client.user.displayAvatarURL
-			);
+		
+		log("warn", rUser.id, msg.author.id, msg.channel);
 
 		let warnchannel = msg.guild.channels.find(`name`, "report");
 		if (!warnchannel) return msg.guild.createChannel("report", "text");
@@ -36,18 +25,7 @@ module.exports.run = (msg, args) => {
 	if (!rUser) return msg.channel.send("Couldn´t find user.");
 	let reason = args.join(" ").slice(22);
 
-	let reportEmbed = new Discord.RichEmbed()
-		.setDescription("~Warn~")
-		.setColor("#ff6600")
-		.addField("Warned User", `${rUser} with ID: ${rUser.id}`)
-		.addField("Warned by", `${msg.author} with ID ${msg.author.id}`)
-		.addField("channel", msg.channel)
-		.addField("time", msg.createdAt)
-		.addField("Reason", reason)
-		.setFooter(
-			client.user.username + " Bot coded by NaCl-y#4400 & Flam3rboy#5979",
-			client.user.displayAvatarURL
-		);
+	log("warn", rUser.id, msg.author.id, reason, msg.channel);
 
 	let warnchannel = msg.guild.channels.find(`name`, "report");
 	if (!warnchannel) return msg.guild.createChannel("report", "text");

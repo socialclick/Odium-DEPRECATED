@@ -15,17 +15,26 @@ global.log = function(type, user, mod, reason, msgchannel) {
 		case "report":
 			color = "#ff6600";
 			break;
+		case "clear":
+			color = "#ff6600";
 	}
 
 	let channel = msg.guild.channels.find(`name`, "report");
 	let time = new Date().toGMTString().slice(5, -4);
 
-	let fEmbed = new Discord.RichEmbed()
+	let fEmbed = new Discord.RichEmbed();
+	if (user) {
+		fEmbed.addField(type + " User:", `<@${user}>`);
+	}
+
+	fEmbed
 		.setTitle("~" + type + "~")
-		.addField(type + " User:", `<@${user}>`)
 		.addField(type + " by", `<@${mod}>`)
-		.addField(type + " at", time)
-		.addField(type + " for", reason)
+		.addField(type + " at", time);
+	if (reason) {
+		fEmbed.addField(type + " for", reason);
+	}
+	fEmbed
 		.addField(type + " in", msgchannel)
 		.setColor(color)
 		.setFooter(
