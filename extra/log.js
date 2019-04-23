@@ -1,6 +1,6 @@
 module.exports.init = () => {};
 
-global.log = function(type, user, mod, reason, msgchannel) {
+global.log = async function(type, user, mod, reason, msgchannel) {
 	var color;
 
 	switch (type.toLowerCase()) {
@@ -19,14 +19,16 @@ global.log = function(type, user, mod, reason, msgchannel) {
 			color = "#ff6600";
 	}
 
-	let channel = msg.guild.channels.find(`name`, "report");
-	let time = new Date().toGMTString().slice(5, -4);
+	var channel = msgchannel.guild.channels.find(`name`, "report");
+	var time = new Date().toGMTString().slice(5, -4);
 
 	if (!channel) {
-		member.guild.createChannel("report", "text");
+		await msgchannel.guild
+			.createChannel("report", "text")
+			.then(x => (channel = x));
 	}
 
-	let fEmbed = new Discord.RichEmbed();
+	var fEmbed = new Discord.RichEmbed();
 	if (user) {
 		fEmbed.addField(type + " User:", `<@${user}>`);
 	}
