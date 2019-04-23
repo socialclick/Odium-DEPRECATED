@@ -2,9 +2,9 @@ module.exports.run = (msg, args) => {
 	console.log("meme started");
 	//command
 
-	let num = Math.floor(Math.random());
-	let reddit = ["dankmemes", "ich_iel"];
-	let subreddit = reddit[num];
+	var reddit = ["dankmemes", "ich_iel"];
+	var num = Math.floor(Math.random());
+	var subreddit = reddit[num];
 
 	msg.channel.startTyping();
 	randomPuppy(subreddit)

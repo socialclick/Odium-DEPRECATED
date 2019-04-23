@@ -137,11 +137,10 @@ function play(guild, song) {
 		})
 		.on("error", error => console.error(error));
 	dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
-
 	return send(
 		serverQueue.textChannel,
 		"",
 		"Play",
-		`🎶 Start playing: **${song.title}**`
+		`🎶 Start playing: **${song.title}**\n${song.url}`
 	);
 }
