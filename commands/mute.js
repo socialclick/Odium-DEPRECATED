@@ -75,6 +75,6 @@ module.exports.run = (msg, args) => {
 };
 
 module.exports.help = {
-	help: "mute",
-	description: "mutes a user ``mute [@user] [time in min]``"
+	help: "``mute [@user] [time in min]``",
+	description: "mutes a user"
 };

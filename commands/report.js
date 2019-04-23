@@ -11,9 +11,6 @@ module.exports.run = (msg, args) => {
 
 		log("report", rUser.id, msg.author.id, msg.channel);
 
-		let reportschannel = msg.guild.channels.find(`name`, "report");
-		if (!reportschannel) return msg.guild.createChannel("report", "text");
-
 		msg.delete().catch(O_o => {});
 	}
 
@@ -24,9 +21,6 @@ module.exports.run = (msg, args) => {
 	let reason = args.join(" ").slice(22);
 
 	log("report", rUser.id, msg.author.id, reason, msg.channel);
-
-	let reportschannel = msg.guild.channels.find(`name`, "report");
-	if (!reportschannel) return msg.guild.createChannel("report", "text");
 
 	msg.delete().catch(O_o => {});
 };
