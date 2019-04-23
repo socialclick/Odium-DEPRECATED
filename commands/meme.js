@@ -3,8 +3,8 @@ module.exports.run = (msg, args) => {
 	//command
 
 	let num = Math.floor(Math.random());
-	let subreddit = reddit[num];
 	let reddit = ["dankmemes", "ich_iel"];
+	let subreddit = reddit[num];
 
 	msg.channel.startTyping();
 	randomPuppy(subreddit)
