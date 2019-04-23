@@ -5,7 +5,8 @@
     -meme befehl ✅
     -report System ✅
     -ban, clear, help, kick, warn ✅
-    -mute 
+    -mute ✅
+    -invite msg
     -leave msg ✅
     -tryout
           
