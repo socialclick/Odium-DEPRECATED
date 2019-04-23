@@ -1,6 +1,4 @@
 module.exports.init = (msg, args) => {
-	console.log("leave.js");
-
 	client.on("guildMemberRemove", member => {
 		const channel = member.guild.channels.find(x => x.name==="welcome")
 		
