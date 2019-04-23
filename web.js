@@ -1,13 +1,13 @@
 const express = require("express");
 const request = require("request");
 const app = express();
-var port = 1008;
+var port = 2008;
 const server = app.listen(port, () => {
 	console.log("Listening on port: " + port);
 });
 global.io = require("socket.io")(server);
 
-app.get("/api/authorize", (req, res) => {
+app.get("/authorize", (req, res) => {
 	console.log(req.query.code);
 	request.post(
 		"https://discordapp.com/api/v6/oauth2/token",
@@ -47,8 +47,6 @@ io.on("connection", function(socket) {
 	console.log("an user connected", socket.id);
 });
 
-app.use("/", (req, res) => {
-	request("http://localhost:3000/" + req.originalUrl).pipe(res);
-});
+app.use("/", express.static("public"));
 
 module.exports.init = d => {};
