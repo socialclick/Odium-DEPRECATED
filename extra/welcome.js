@@ -1,11 +1,11 @@
 module.exports.init = () => {
 	client.on("guildMemberAdd", member => {
-		const channel = member.guild
-			._sortedChannels()
-			.find(ch => ch.type === "text");
+		const channel = member.guild.channels.find(x => x.name === "welcome");
 
 		if (!channel) {
-			return msg.guild.createChannel("welcome", "text");
+			return msg.guild.createChannel("welcome", "text").then(x => {
+				x.send(`Welcome to the server, ${member}`);
+			});
 		}
 
 		channel.send(`Welcome to the server, ${member}`);
