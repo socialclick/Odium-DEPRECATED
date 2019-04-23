@@ -3,7 +3,7 @@ module.exports.init = () => {
 		const channel = member.guild.channels.find(x => x.name === "welcome");
 
 		if (!channel) {
-			return msg.guild.createChannel("welcome", "text").then(x => {
+			return member.guild.createChannel("welcome", "text").then(x => {
 				x.send(`Welcome to the server, ${member}`);
 			});
 		}

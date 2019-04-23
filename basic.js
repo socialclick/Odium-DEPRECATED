@@ -36,7 +36,7 @@ module.exports.init = fs => {
 
 global.guild = function(id, settings) {};
 
-global.send = function(channel, type, title, text, color, fields, thumbnail) {
+global.send = function(channel, type, title, text, fields, thumbnail) {
 	var color;
 
 	type = type.toLowerCase();
@@ -75,7 +75,9 @@ global.send = function(channel, type, title, text, color, fields, thumbnail) {
 			client.user.displayAvatarURL
 		);
 
-	message.fields = fields;
+	if (fields) {
+		message.fields = fields;
+	}
 
 	return channel.send(message).catch(e => console.log(e));
 };
