@@ -8,6 +8,6 @@ module.exports.run = (msg, args) => {
 };
 
 module.exports.help = {
-	help: "vote for the bot",
-	description: "vote"
+	help: "vote",
+	description: "Votes for the bot"
 };
