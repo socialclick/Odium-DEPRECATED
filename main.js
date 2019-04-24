@@ -14,7 +14,7 @@ global.ytdl = require("ytdl-core");
 global.jsonfile = require("jsonfile");
 global.randomPuppy = require("random-puppy");
 
-global.prefix = "!";
+global.prefix = "-";
 
 global.youtube = new YouTube("AIzaSyAz1Vni_d5yFCAa27zavInnfa6wV3KbrFo");
 
