@@ -27,5 +27,5 @@ module.exports.run = (msg, args) => {
 
 module.exports.help = {
 	help: "report",
-	description: "reports a user ``!report [@user] [reason]"
+	description: "reports a user ``report [@user] [reason]"
 };
