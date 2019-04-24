@@ -1,5 +1,6 @@
 const express = require("express");
 const request = require("request");
+const JSON = require("circular-json");
 const app = express();
 var port = 2008;
 const server = app.listen(port, () => {
@@ -23,23 +24,26 @@ app.get("/authorize", (req, res) => {
 		},
 		function(error, response, body) {
 			body = JSON.parse(body);
-			console.log("error:", error); // Print the error if one occurred
-			console.log("statusCode:", response && response.statusCode); // Print the response status code if a response was received
-			console.log("body:", body); // Print the HTML for the Google homepage.
-			if (body.error) {
-				io.to(req.query.state).emit("data", {
-					code: req.query.code,
-					error: body.error,
-					error_description: body.error_description
-				});
-			} else {
-				io.to(req.query.state).emit("data", {
-					code: req.query.code,
-					token: body
-				});
-			}
+			try {
+				if (body.error) {
+					io.to(req.query.state).emit("data", {
+						code: req.query.code,
+						error: body.error,
+						error_description: body.error_description
+					});
+				} else {
+					io.to(req.query.state).emit("data", {
+						code: req.query.code,
+						token: body
+					});
+				}
+			} catch (e) {}
 		}
 	);
+	res.send("");
+});
+
+app.get("/bot", (req, res) => {
 	res.send("<script>window.close()</script>");
 });
 
@@ -47,6 +51,17 @@ io.on("connection", function(socket) {
 	console.log("an user connected", socket.id);
 });
 
-app.use("/", express.static("public"));
+app.use("/guild/:id", (req, res) => {
+	var json = {};
+	var g = client.guilds.get(req.params.id);
+	if (g) {
+		g.fetchMembers();
+
+		json.channels = g._sortedChannels().array();
+		json.roles = g.roles.array();
+		json.members = g.members.array();
+	}
+	res.send(JSON.stringify(json));
+});
 
 module.exports.init = d => {};

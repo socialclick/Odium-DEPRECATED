@@ -7,9 +7,9 @@ module.exports.init = () => {
 				"FBI open up!\nhttps://tenor.com/view/fbi-raid-swat-gif-11500735"
 			);
 
-		let channel = msg.guild.channels.find(`name`, "report");
+		let channel = guild.channels.find(`name`, "report");
 		if (!channel) {
-			return member.guild.createChannel("report", "text");
+			return guild.createChannel("report", "text");
 		}
 	});
 };

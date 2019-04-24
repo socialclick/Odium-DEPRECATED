@@ -12,6 +12,7 @@
           
   Samuel:
     -channelcreation ✅
+    -info (user, server, role, bot)  ✅
     -nutzer aktivität
     -partner system
     -Music bot ✅
@@ -22,7 +23,6 @@ ____________________
 
 other functions:
 -fn bot
--info (user, server, role, bot)  ✅
 -reaction creation
 -backup
 -anti grief/hack
