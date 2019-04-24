@@ -16,5 +16,5 @@ module.exports.run = (msg, args) => {
 
 module.exports.help = {
 	help: "",
-	description: "Shows memes from r/dankmemes r/ich_iel"
+	description: "Shows memes from r/dankmemes"
 };
