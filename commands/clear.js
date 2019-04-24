@@ -44,5 +44,5 @@ module.exports.run = (msg, args) => {
 
 module.exports.help = {
 	help: "clear",
-	description: "deletes msg ``clear [amount]``"
+	description: "deletes msg ``clear [amounst]``"
 };
