@@ -9,14 +9,15 @@
 			</p>
 			<p>
 				<a
+					id="homeLogin"
 					onclick="doLogin()"
 					class="btn btn-primary my-2 text-white pointer"
 					>Login</a
 				>
 				<a
-					onclick="invite()"
+					onclick="guildList()"
 					class="btn btn-secondary my-2 text-white pointer"
-					>Add to Discord</a
+					>Dashboard</a
 				>
 			</p>
 		</div>
@@ -25,15 +26,15 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4">
-					<div class="card mb-4 box-shadow">
-						<div class="card-body">
-							<p class="card-text">
-								This is a wider card with supporting text below
-								as a natural lead-in to additional content. This
-								content is a little bit longer.
-							</p>
-						</div>
-					</div>
+					<a
+						href="https://discordbots.org/bot/569201129691283497"
+						target="_BLANK"
+					>
+						<img
+							class="w-100"
+							src="https://discordbots.org/api/widget/569201129691283497.svg"
+						/>
+					</a>
 				</div>
 			</div>
 		</div>

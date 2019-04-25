@@ -31,10 +31,12 @@ module.exports.init = fs => {
 				console.log("Saved config");
 			})
 			.catch(error => console.error(error));
-	}, 1000 * 60 * 5);
+	}, 1000 * 10);
 };
 
-global.guild = function(id, settings) {};
+global.getConfig = function(g) {
+	return config.guilds.find(x => x.id == g.id);
+};
 
 global.send = function(channel, type, title, text, fields, thumbnail) {
 	var color;

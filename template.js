@@ -1,9 +1,6 @@
-module.exports.run = (msg, args) => {
-	console.log("");
-    //command
-};
+module.exports.run = (msg, args) => {};
 
 module.exports.help = {
-	help: "",
-	description: ""
+	help: "template",
+	description: "This is a template"
 };

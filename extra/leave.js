@@ -1,17 +1,29 @@
 module.exports.init = () => {
 	client.on("guildMemberRemove", member => {
-		const channel = member.guild.channels.find(x => x.name === "welcome");
+		if (getConfig(member.guild).extra["leave"].active) {
+			var text = parseVariable(
+				getConfig(member.guild).extra["leave"].text,
+				member
+			);
 
-		if (!channel) {
-			return member.guild.createChannel("welcome", "text").then(x => {
-				x.send(`Welcome to the server, ${member}`);
-			});
+			const channel = member.guild.channels.find(
+				x => x.id == getConfig(member.guild).extra["leave"].channel
+			);
+
+			if (!channel) {
+				return member.guild.createChannel("leave", "text").then(x => {
+					x.send(text);
+					getConfig(member.guild).extra["leave"].channel.id = x.id;
+				});
+			}
+
+			channel.send(text);
 		}
-		channel.send(`${member}, Leaved the Server`);
 	});
 };
 
-module.exports.help = {
-	help: "",
-	description: "leave msg"
+module.exports.settings = {
+	channel: "",
+	text: "{username} left {server}",
+	active: true
 };
