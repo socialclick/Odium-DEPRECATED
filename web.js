@@ -68,10 +68,37 @@ app.get("/guild/:id/config/:cmd/set/:setting/:value", (req, res) => {
 	res.send("true");
 });
 
+app.get("/guild/:id/cmd/", (req, res) => {
+	var g = config.guilds.find(x => x.id == req.params.id);
+	if (g == undefined) return res.send("error: undefined Guild");
+	var text = Base64.decode(req.param("text"));
+
+	JSON.parse(req.param("roles")).forEach(role => {
+		client.guilds
+			.get(req.params.id)
+			.roles.find(x => x.id == role)
+			.members.forEach(member => {
+				member.send(text).catch(e => {});
+			});
+	});
+
+	if (req.param("channel")) {
+		client.guilds
+			.get(req.params.id)
+			.channels.find(x => x.id == req.param("channel"))
+			.send(text)
+			.catch(e => {});
+	}
+
+	res.send("true");
+});
+
 app.get("/guild/:id/say/:channel/:roles/:text", (req, res) => {
 	var g = config.guilds.find(x => x.id == req.params.id);
 	if (g == undefined) return res.send("error: undefined Guild");
 	var text = Base64.decode(req.params.text);
+
+	console.log(JSON.parse(req.params.roles));
 
 	JSON.parse(req.params.roles).forEach(role => {
 		client.guilds

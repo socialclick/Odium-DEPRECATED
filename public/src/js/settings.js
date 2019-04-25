@@ -57,9 +57,24 @@ function displaySettings(guild, body) {
 	textchannels += "</optgroup>";
 
 	$(".textchannels").html(textchannels);
-	$("#sayChannels").html(
+	$("#sayChannels select").html(
 		"<option value='none'>- None -</option>" + textchannels
 	);
+	var $span = $(".textchannels");
+
+	// Replace all the span's with a div
+	$span.replaceWith(function() {
+		return $("<select/>", {
+			class: "textchannels dropdown bootstrap-select",
+			html: this.innerHTML
+		});
+	});
+
+	$(".textchannels").selectpicker({
+		liveSearch: true,
+		style: "btn-outline-primary"
+	});
+
 	$("#channelWelcomeMsg").val(guild.config.extra.welcome.channel);
 	$("#channelLeaveMsg").val(guild.config.extra.leave.channel);
 	$("#channelCreationEnable")[0].checked =

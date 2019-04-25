@@ -30,12 +30,13 @@
 						href="https://discordbots.org/bot/569201129691283497"
 						target="_BLANK"
 					>
-						<img
+						<!-- <img
 							class="w-100"
 							src="https://discordbots.org/api/widget/569201129691283497.svg"
-						/>
+						/> -->
 					</a>
 				</div>
+				<iframe src="https://discordapp.com/widget?id=569246497510785044&theme=light" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
 			</div>
 		</div>
 	</div>

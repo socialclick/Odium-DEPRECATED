@@ -75,7 +75,7 @@
 	background-repeat: no-repeat;
 }
 
-.dropdown .dropdown-menu {
+/* .dropdown .dropdown-menu {
 	-webkit-transition: all 200ms ease-in;
 	-moz-transition: all 200ms ease-in;
 	-ms-transition: all 200ms ease-in;
@@ -86,4 +86,4 @@
 .dropdown:hover .dropdown-menu {
 	display: block;
 	opacity: 1;
-}
+} */

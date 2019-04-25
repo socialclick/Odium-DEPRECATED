@@ -1,12 +1,18 @@
 function say() {
-	var channel = $("#sayChannels").val();
+	var channel = $("#sayChannels")
+		.find("select")
+		.val();
 
 	var roles = [];
 
 	$("#sayRoleList")
 		.children()
 		.each((i, x) => {
-			roles.push($(x).val());
+			roles.push(
+				$(x)
+					.find("select")
+					.val()
+			);
 		});
 
 	console.log(roles, channel);
@@ -22,6 +28,18 @@ function say() {
 			Base64.encode($("#sayText").val()),
 		success: function(body) {
 			console.log(body);
+			if (body == "true") {
+				$("#statusSend").bs_success("Successfully send message!");
+			} else {
+				$("#statusSend").bs_alert(
+					"There was an error sending you message!"
+				);
+			}
+		},
+		error: function() {
+			$("#statusSend").bs_alert(
+				"There was an error sending you message!"
+			);
 		}
 	});
 }
@@ -35,8 +53,16 @@ function removeSayRole() {
 
 function addSayRole() {
 	$("#sayRoleList").append(
-		"<select class='roles m-2'>" + generateRoles(guild.roles) + "</select>"
+		"<select class='roles col-5 m-2 selectpicker'>" +
+			generateRoles(guild.roles) +
+			"</select>"
 	);
+	$("#sayRoleList .selectpicker")
+		.last()
+		.selectpicker({
+			liveSearch: true,
+			style: "btn-outline-primary"
+		});
 }
 
 function generateRoles(roles) {
