@@ -34,16 +34,34 @@
 		<div id="page-content-wrapper">
 			<div class="tab-content container" id="myTabContent">
 				<div class="tab-pane fade show active" id="settings">
+					<div class="alert alert-info alert-dismissible fade show">
+						AutoSave enabled!
+						<button
+							type="button"
+							class="close fade"
+							data-dismiss="alert"
+						>
+							<span>&times;</span>
+						</button>
+					</div>
 					<h3 class="text-center m-3">Settings</h3>
-					Welcome Msg:
-					<select class="textchannels" data-live-search="true">
-					</select>
+					<?php
+require "settings/welcomeMessage.html";
+require "settings/leaveMessage.html";
+require "settings/channelCreation.html";
+?>
 				</div>
 				<div class="tab-pane fade" id="commands">
 					<h3 class="text-center m-3">Commands</h3>
+					<?php
+require "commands/say.html";
+?>
 				</div>
 				<div class="tab-pane fade" id="help">
 					<h3 class="text-center m-3">Help</h3>
+					<?php
+require "help/info.html";
+?>
 				</div>
 			</div>
 		</div>

@@ -38,12 +38,16 @@
 					id="accountDropdownButton"
 					data-toggle="dropdown"
 				>
+				<i class="fas fa-user"></i>&nbsp;
 					Login
 				</button>
 				<div class="dropdown-menu" id="accountDropdown">
 					<a class="dropdown-item" href="#" onclick="guildList()"
 						>Server List</a
 					>
+					<a class="dropdown-item" href="#" onclick="refresh(this)">
+					<i class="fas fa-sync pointer"></i> Refresh
+					</a>
 					<a class="dropdown-item" href="#" onclick="logout()"
 						>Logout</a
 					>

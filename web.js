@@ -1,6 +1,7 @@
 const express = require("express");
 const request = require("request");
 const JSON = require("circular-json");
+var Base64 = require("js-base64").Base64;
 const app = express();
 var port = 2008;
 const server = app.listen(port, () => {
@@ -49,6 +50,67 @@ app.get("/bot", (req, res) => {
 
 io.on("connection", function(socket) {
 	console.log("an user connected", socket.id);
+});
+
+app.get("/guild/:id/config/:cmd/set/:setting/:value", (req, res) => {
+	var g = config.guilds.find(x => x.id == req.params.id);
+	if (g == undefined) return res.send("error: undefined Guild");
+
+	var cmd = g.extra[req.params.cmd];
+	if (!cmd) {
+		cmd = g.commands[req.params.cmd];
+	}
+
+	if (!cmd) return res.send("error: command not found");
+
+	cmd[req.params.setting] = Base64.decode(req.params.value);
+
+	res.send("true");
+});
+
+app.get("/guild/:id/say/:channel/:roles/:text", (req, res) => {
+	var g = config.guilds.find(x => x.id == req.params.id);
+	if (g == undefined) return res.send("error: undefined Guild");
+	var text = Base64.decode(req.params.text);
+
+	JSON.parse(req.params.roles).forEach(role => {
+		client.guilds
+			.get(req.params.id)
+			.roles.find(x => x.id == role)
+			.members.forEach(member => {
+				member.send(text).catch(e => {});
+			});
+	});
+
+	if (req.params.channel) {
+		client.guilds
+			.get(req.params.id)
+			.channels.find(x => x.id == req.params.channel)
+			.send(text)
+			.catch(e => {});
+	}
+
+	res.send("true");
+});
+
+app.get("/guild/:id/config/", (req, res) => {
+	var g = config.guilds.find(x => x.id == req.params.id);
+	if (g == undefined) return res.send("error: undefined Guild");
+
+	res.send(JSON.stringify(g));
+});
+
+app.get("/stats/", (req, res) => {
+	var data = {};
+
+	data.servers = client.guilds.size;
+	data.channels = client.channels.size;
+	data.roles = 0;
+	data.uptime = Math.floor(client.uptime);
+	data.ping = Math.floor(client.ping);
+	client.guilds.forEach(x => (data.roles += x.roles.size));
+
+	res.send(JSON.stringify(data));
 });
 
 app.use("/guild/:id", (req, res) => {

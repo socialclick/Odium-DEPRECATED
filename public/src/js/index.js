@@ -2,6 +2,7 @@ var loggedin = false;
 var user;
 var token;
 var guilds;
+var transition = 200;
 var socket = io(location.origin);
 
 $(document).ready(() => {
@@ -66,7 +67,7 @@ function doLogin(e) {
 
 	$("#load").show();
 	win = window.open(
-		"https://discordapp.com/api/oauth2/authorize?client_id=569201129691283497&redirect_uri=http://flam3rboy.ddns.net/api/authorize&response_type=code&scope=identify guilds guilds.join&state=" +
+		"https://discordapp.com/api/oauth2/authorize?client_id=569201129691283497&redirect_uri=http://flam3rboy.ddns.net/api/authorize&response_type=code&scope=identify guilds&state=" +
 			socket.id,
 		"windowOpenTab",
 		"height=900,width=600"
@@ -102,103 +103,120 @@ function gotLogin(data) {
 		try {
 			win.close();
 		} catch (e) {}
-		$("#load").hide();
+		$("#load").hide(transition);
 	} else {
 		Cookies.set("token", btoa(JSON.stringify(data.token)));
 		token = data.token;
-		$.get({
-			url: "https://discordapp.com/api/users/@me",
-			beforeSend: function(request) {
-				request.setRequestHeader(
-					"Authorization",
-					data.token.token_type + " " + data.token.access_token
-				);
-			},
-			success: function(u) {
-				user = u;
-				$("#accountDropdownButton").html(u.username);
-				$("#accountDropdown").show();
-				$("#accountDropdown").removeClass("show");
-				$("#accountDropdown").addClass("active");
-				finishUserLoad();
-
-				window.scrollTo(0, 0);
-				$("#load p").html(
-					"Hello " + u.username + "#" + u.discriminator
-				);
-			}
-		});
-
-		$.get({
-			url: "https://discordapp.com/api/users/@me/guilds",
-			beforeSend: function(request) {
-				request.setRequestHeader(
-					"Authorization",
-					data.token.token_type + " " + data.token.access_token
-				);
-			},
-			success: function(g) {
-				guilds = g;
-
-				finishUserLoad();
-			}
-		});
+		refresh();
 	}
 }
-
-var calls = 0;
 
 function finishUserLoad() {
-	calls++;
-	if (calls >= 2) {
-		try {
-			win.close();
-		} catch (e) {}
+	try {
+		win.close();
+	} catch (e) {}
 
-		var text = "";
-		console.log(guilds);
+	$('[data-toggle="tooltip"]').tooltip();
 
-		guilds
-			.filter(x => x.owner || (x.permissions & 0x8) != 0)
-			.forEach(guild => {
-				if (guild.icon) {
-					text +=
-						"<img id='" +
-						guild.id +
-						"' onclick='selectGuild(this)' data-placement='bottom' data-toggle='tooltip' title='" +
-						guild.name +
-						"' class='guild pointer' src='https://cdn.discordapp.com/icons/" +
-						guild.id +
-						"/" +
-						guild.icon +
-						"'><br>";
-				} else {
-					var initals = "";
-					guild.name
-						.split(" ")
-						.forEach(x => (initals += x.slice(0, 1)));
-					text +=
-						"<span id='" +
-						guild.id +
-						"' onclick='selectGuild(this)' data-placement='bottom' data-toggle='tooltip' title='" +
-						guild.name +
-						"' class='guild pointer'>" +
-						initals +
-						"</span>";
-				}
-			});
+	$(".dashboard").show(transition);
+	$("main").hide(transition);
+	$("footer").hide(transition);
+}
 
-		$("#guildList").html(text);
-		$('[data-toggle="tooltip"]').tooltip();
+function refresh() {
+	$("#load").show(transition);
+	$("#load p").html("Refreshing ...");
+	getStats();
 
-		$("#load").hide();
-		$(".dashboard").show();
-		$("main").hide();
-		$("footer").hide();
+	$.get({
+		url: "https://discordapp.com/api/users/@me",
+		beforeSend: function(request) {
+			request.setRequestHeader(
+				"Authorization",
+				token.token_type + " " + token.access_token
+			);
+		},
+		success: function(u) {
+			user = u;
+			$("#homeLogin").html("Refresh");
+			$("#homeLogin").attr("onclick", "refresh()");
+			$("#accountDropdownButton").html(
+				"<img class='userImg' src='https://cdn.discordapp.com/avatars/" +
+					u.id +
+					"/" +
+					u.avatar +
+					"'>&nbsp;" +
+					u.username
+			);
+			$("#accountDropdown").show(transition);
+			$("#accountDropdown").removeClass("show");
+			$("#accountDropdown").addClass("active");
+			finishUserLoad();
+
+			window.scrollTo(0, 0);
+			$("#load p").html("Hello " + u.username + "#" + u.discriminator);
+		}
+	});
+
+	$.get({
+		url: "https://discordapp.com/api/users/@me/guilds",
+		beforeSend: function(request) {
+			request.setRequestHeader(
+				"Authorization",
+				token.token_type + " " + token.access_token
+			);
+		},
+		success: function(g) {
+			guilds = g;
+			$("#load").hide();
+
+			displayGuilds();
+		}
+	});
+}
+
+function displayGuilds() {
+	var text = "";
+
+	if (guilds.filter(x => x.owner || (x.permissions & 0x8) != 0).length <= 0) {
+		text += "<h5>You do not have a server where you are admin</h5>";
+	}
+
+	guilds
+		.filter(x => x.owner || (x.permissions & 0x8) != 0)
+		.forEach(g => {
+			if (g.icon) {
+				text +=
+					"<img id='" +
+					g.id +
+					"' onclick='selectGuild(this)' data-placement='bottom' data-toggle='tooltip' title='" +
+					g.name +
+					"' class='guild pointer' src='https://cdn.discordapp.com/icons/" +
+					g.id +
+					"/" +
+					g.icon +
+					"'><br>";
+			} else {
+				var initals = "";
+				g.name.split(" ").forEach(x => (initals += x.slice(0, 1)));
+				text +=
+					"<span id='" +
+					g.id +
+					"' onclick='selectGuild(this)' data-placement='bottom' data-toggle='tooltip' title='" +
+					g.name +
+					"' class='guild pointer'>" +
+					initals +
+					"</span>";
+			}
+		});
+
+	$("#guildList").html(text);
+	if (guild.id) {
+		selectGuild({ id: guild.id });
 	}
 }
 
-var guild;
+var guild = {};
 var testGuildInvite = 0;
 
 function selectGuild(g) {
@@ -230,61 +248,19 @@ function selectGuild(g) {
 				}
 			} else {
 				testGuildInvite = 0;
-				$("#guildList").hide();
+				$("#guildList").hide(transition);
 				$("#wrapper").css("display", "flex");
-				guild = body;
 
-				body.textchannels = body.channels
-					.filter(x => x.type != "voice")
-					.sort((a, b) => {
-						if (a.position > b.position) {
-							return 1;
-						} else if (a.position < b.position) {
-							return -1;
-						} else {
-							return 0;
-						}
-					});
-
-				var newchannelorder = [];
-
-				var categorys = body.textchannels.filter(
-					x => x.type == "category"
-				);
-
-				categorys.forEach(c => {
-					newchannelorder.push(c);
-					body.textchannels
-						.filter(t => t.parentID == c.id)
-						.forEach(t => newchannelorder.push(t));
-				});
-
-				console.log(body);
-
-				var textchannels = "";
-				var lastcategory = "";
-
-				newchannelorder.forEach(x => {
-					if (lastcategory != x.name && x.type == "category") {
-						textchannels +=
-							"</optgroup><optgroup label='" + x.name + "'>";
-					} else {
-						textchannels +=
-							"<option value='" +
-							x.id +
-							"' id='" +
-							x.id +
-							"'>" +
-							x.name +
-							"</option>";
+				$.get({
+					url: "/api/guild/" + g + "/config",
+					success: function(config) {
+						config = JSON.parse(config);
+						guild = body;
+						guild.config = config;
+						guild.id = g;
+						displaySettings(guild, body);
 					}
 				});
-
-				textchannels += "</optgroup>";
-				$(".textchannels").html(textchannels);
-				var $newElement = replaceTag($(".textchannels"), "select");
-				$(".textchannels").replaceWith($newElement);
-				$(".textchannels").selectpicker();
 			}
 		}
 	});
@@ -296,17 +272,17 @@ function logout() {
 }
 
 function guildList() {
-	$(".dashboard").show();
-	$("main").hide();
-	$("footer").hide();
-	$("#guildList").show();
-	$("#wrapper").hide();
+	$(".dashboard").show(transition);
+	$("main").hide(transition);
+	$("footer").hide(transition);
+	$("#guildList").show(transition);
+	$("#wrapper").hide(transition);
 }
 
 function home() {
-	$(".dashboard").hide();
-	$("main").show();
-	$("footer").show();
+	$(".dashboard").hide(transition);
+	$("main").show(transition);
+	$("footer").show(transition);
 }
 
 function replaceTag($element, newTagName) {

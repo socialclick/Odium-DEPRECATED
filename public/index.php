@@ -1,11 +1,8 @@
 <?php
 
-/*
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
- */
 
 ?>
 
@@ -62,11 +59,15 @@ require "footer.php";
 		</div>
 
 		<script src="src/js/js.cookie.js"></script>
+		<script src="src/js/base64.min.js"></script>
 		<script src="src/js/socket.io.js"></script>
 		<script src="src/js/jquery-3.3.1.min.js"></script>
 		<script src="src/js/popper.min.js"></script>
 		<script src="src/js/bootstrap.min.js"></script>
 		<script src="src/js/addons/bootstrap-select.min.js"></script>
+		<script src="src/js/settings.js"></script>
+		<script src="src/js/commands.js"></script>
+		<script src="src/js/help.js"></script>
 		<script src="src/js/index.js"></script>
 	</body>
 </html>
