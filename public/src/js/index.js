@@ -272,11 +272,15 @@ function logout() {
 }
 
 function guildList() {
-	$(".dashboard").show(transition);
-	$("main").hide(transition);
-	$("footer").hide(transition);
-	$("#guildList").show(transition);
-	$("#wrapper").hide(transition);
+	if (user) {
+		$(".dashboard").show(transition);
+		$("main").hide(transition);
+		$("footer").hide(transition);
+		$("#guildList").show(transition);
+		$("#wrapper").hide(transition);
+	} else {
+		doLogin();
+	}
 }
 
 function home() {
