@@ -2,7 +2,10 @@
 	<div class="row container" id="guildList"></div>
 	<div class="settings" id="wrapper" style="display: none">
 		<div class="bg-light border-right" id="sidebar-wrapper">
-			<div class="sidebar-heading">Dashboard</div>
+			<div class="sidebar-heading">
+				<span class="pointer" onclick="guildList()">Dashboard</span>
+				<i onclick="refresh(true, this)" class="fas fa-sync pointer"></i>
+			</div>
 			<ul
 				class="nav nav-tabs list-group list-group-flush"
 				id="sidebarTabs"
@@ -55,6 +58,7 @@ require "settings/channelCreation.html";
 					<h3 class="text-center m-3">Commands</h3>
 					<?php
 require "commands/say.html";
+require "commands/rr.html";
 ?>
 				</div>
 				<div class="tab-pane fade" id="help">

@@ -5,9 +5,12 @@ module.exports.init = fs => {
 		var jsfile = file.filter(f => f.split(".").pop() === "js");
 
 		jsfile.forEach((f, i) => {
-			let props = require(__dirname + "/commands/" + f);
+			var props = require(__dirname + "/commands/" + f);
 			console.log(f + " loaded!");
 			client.commands.set(f.replace(".js", ""), props);
+			if (props.init) {
+				props.init();
+			}
 		});
 	});
 
@@ -17,7 +20,7 @@ module.exports.init = fs => {
 		var jsfile = file.filter(f => f.split(".").pop() === "js");
 
 		jsfile.forEach((f, i) => {
-			let props = require(__dirname + "/extra/" + f);
+			var props = require(__dirname + "/extra/" + f);
 			console.log(f + " loaded!");
 			client.extra.set(f.replace(".js", ""), props);
 			props.init();
