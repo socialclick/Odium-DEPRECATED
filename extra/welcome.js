@@ -1,6 +1,6 @@
 module.exports.init = () => {
 	client.on("guildMemberAdd", member => {
-		if (getConfig(member.guild).extra["welcome"].active) {
+		if (getConfig(member.guild).extra["welcome"].active == "true") {
 			var text = parseVariable(
 				getConfig(member.guild).extra["welcome"].text,
 				member
@@ -25,7 +25,7 @@ module.exports.init = () => {
 module.exports.settings = {
 	channel: "",
 	text: "Hey ${username}, welcome to ${server} 🤗 🎉Have fun!",
-	active: true
+	active: "true"
 };
 
 global.parseVariable = function(text, member) {
