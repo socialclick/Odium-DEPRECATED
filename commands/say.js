@@ -15,6 +15,6 @@ module.exports.run = (msg, args) => {
 };
 
 module.exports.help = {
-	help: "!say [text]",
+	help: "say [text]",
 	description: "say something in a channel"
 };

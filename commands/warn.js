@@ -34,5 +34,5 @@ module.exports.run = (msg, args) => {
 
 module.exports.help = {
 	help: "warn",
-	description: "warn`s a user ``!warn [@user] [reason]``"
+	description: "warn`s a user ``warn [@user] [reason]``"
 };

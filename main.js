@@ -13,7 +13,9 @@ global.YouTube = require("simple-youtube-api");
 global.ytdl = require("ytdl-core");
 global.jsonfile = require("jsonfile");
 global.randomPuppy = require("random-puppy");
-global.prefix = "!";
+
+global.prefix = "-";
+
 global.youtube = new YouTube("AIzaSyAz1Vni_d5yFCAa27zavInnfa6wV3KbrFo");
 
 client.commands = new Discord.Collection();
@@ -34,7 +36,7 @@ client.on("message", message => {
 	if (message.author.bot) return;
 	if (message.channel.type === "dm")
 		return message.channel.send(
-			"Die Befehle dieses Bots sind nicht für Privatnachrichten ausgelegt"
+			"Please use Commands for this bot in a server-chat!"
 		);
 
 	let messageArray = message.content.split(" ");
