@@ -16,7 +16,7 @@ app.get("/authorize", (req, res) => {
 		{
 			form: {
 				client_id: "569201129691283497",
-				client_secret: "***REMOVED***",
+				client_secret: "bc34rHgE71dQ--7ujrss-uPOum3cVoNm",
 				grant_type: "authorization_code",
 				code: req.query.code,
 				scope: "identify guilds",
