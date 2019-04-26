@@ -36,7 +36,7 @@ client.on("message", message => {
 	if (message.author.bot) return;
 	if (message.channel.type === "dm")
 		return message.channel.send(
-			"Die Befehle dieses Bots sind nicht für Privatnachrichten ausgelegt"
+			"Please use Commands for this bot in a server-chat!"
 		);
 
 	let messageArray = message.content.split(" ");
