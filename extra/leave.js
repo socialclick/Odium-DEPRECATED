@@ -1,6 +1,6 @@
 module.exports.init = () => {
 	client.on("guildMemberRemove", member => {
-		if (getConfig(member.guild).extra["leave"].active) {
+		if (getConfig(member.guild).extra["leave"].active == "true") {
 			var text = parseVariable(
 				getConfig(member.guild).extra["leave"].text,
 				member
@@ -25,5 +25,5 @@ module.exports.init = () => {
 module.exports.settings = {
 	channel: "",
 	text: "{username} left {server}",
-	active: true
+	active: "true"
 };

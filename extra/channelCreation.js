@@ -18,6 +18,15 @@ module.exports.init = async function() {
 			function cloneChannel(channel) {
 				channel.setParent(newUserChannel.parent).then(() => {
 					channel.setPosition(newUserChannel.position + 1);
+					channel
+						.lockPermissions()
+						.then(x =>
+							console.log(
+								"Successfully synchronized permissions with parent channel",
+								x
+							)
+						)
+						.catch(console.error);
 				});
 				channel.setUserLimit(newUserChannel.userLimit);
 			}
