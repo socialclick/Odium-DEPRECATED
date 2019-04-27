@@ -1,5 +1,6 @@
 function displayCommands() {
 	$("#sayRoleList").html("");
+	$("#commands > h3").html("Commands - " + guild.name);
 }
 
 function say() {

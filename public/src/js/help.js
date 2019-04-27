@@ -1,3 +1,18 @@
+function displayHelp() {
+	$("#help > h3").html("Help - " + guild.name);
+	getStats();
+	$("#exampleInputEmail1").emojioneArea({
+		filtersPosition: "bottom",
+		tones: false,
+		shortnames: true,
+		autocomplete: true,
+		textcomplete: {
+			maxCount: 20,
+			placement: "absleft"
+		}
+	});
+}
+
 function getStats() {
 	$.get({
 		url: "/api/stats/",

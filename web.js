@@ -16,7 +16,7 @@ app.get("/authorize", (req, res) => {
 		{
 			form: {
 				client_id: "569201129691283497",
-				client_secret: "bc34rHgE71dQ--7ujrss-uPOum3cVoNm",
+				client_secret: "CiCU7SLNgXYbBfhqEzoRygWKCfQ30330",
 				grant_type: "authorization_code",
 				code: req.query.code,
 				scope: "identify guilds",
@@ -91,6 +91,17 @@ app.get("/guild/:id/cmd/", (req, res) => {
 	}
 
 	res.send("true");
+});
+
+app.get("/guild/:id/:channel/", (req, res) => {
+	var g = client.guilds.get(req.params.id);
+	if (g == undefined) return res.send("error: undefined Guild");
+	var c = g.channels.get(req.params.channel);
+	if (c == undefined) return res.send("error: undefined Channel");
+
+	c.fetchMessages({ limit: 100 }).then(x => {
+		res.send(JSON.stringify(x.array()));
+	});
 });
 
 app.get("/guild/:id/say/:channel/:roles/:text", (req, res) => {

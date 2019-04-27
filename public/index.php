@@ -21,6 +21,7 @@ error_reporting(E_ALL);
 			href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 		/>
 		<link rel="stylesheet" href="src/css/addons/bootstrap-select.min.css" />
+		<link rel="stylesheet" href="src/css/emojionearea.css" />
 		<link rel="stylesheet" href="src/css/simple-sidebar.css" />
 		<link rel="stylesheet" href="src/css/index.css" />
 		<title>Odium - The Discord Bot</title>
@@ -63,6 +64,7 @@ require "footer.php";
 		<script src="src/js/socket.io.js"></script>
 		<script src="src/js/jquery-3.3.1.min.js"></script>
 		<script src="src/js/popper.min.js"></script>
+		<script src="src/js/emojionearea.js"></script>
 		<script src="src/js/bootstrap.min.js"></script>
 		<script src="src/js/addons/bootstrap-select.min.js"></script>
 		<script src="src/js/settings.js"></script>

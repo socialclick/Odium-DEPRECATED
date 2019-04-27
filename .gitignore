@@ -1,4 +1,4 @@
-/botconfig.json
+botconfig.json
 
 node_modules/*
 build/*

@@ -5,6 +5,7 @@ function displaySettings(guild, body) {
 	var roles = generateRoles(body.roles);
 
 	$("#sayRoles").html("<option value='none'>- None -</option>" + roles);
+	$("#settings > h3").html("Settings - " + guild.name);
 	$(".roles").html(roles);
 
 	body.textchannels = body.channels

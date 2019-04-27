@@ -137,7 +137,6 @@ function refresh(hide, e) {
 	} catch (e) {}
 
 	$("#load p").html("Refreshing ...");
-	getStats();
 
 	$.get({
 		url: "https://discordapp.com/api/users/@me",
@@ -225,6 +224,14 @@ function displayGuilds() {
 		});
 
 	$("#guildList").html(text);
+
+	var url_string = window.location.href;
+	var url = new URL(url_string);
+	var g = url.searchParams.get("guild");
+
+	if (g) {
+		guild.id = g;
+	}
 	if (guild.id) {
 		selectGuild({ id: guild.id });
 	}
@@ -235,6 +242,7 @@ var testGuildInvite = 0;
 
 function selectGuild(g) {
 	g = g.id;
+	window.history.replaceState(null, null, "?guild=" + g);
 	$.get({
 		url: location.origin + "/api/guild/" + g,
 		success: function(body) {
@@ -270,10 +278,14 @@ function selectGuild(g) {
 					success: function(config) {
 						config = JSON.parse(config);
 						guild = body;
+						guild.name = guilds.find(
+							x => x.id == "549258965389803550"
+						).name;
 						guild.config = config;
 						guild.id = g;
 						displaySettings(guild, body);
 						displayCommands(guild, body);
+						displayHelp();
 					}
 				});
 			}
@@ -287,6 +299,7 @@ function logout() {
 }
 
 function guildList() {
+	window.history.replaceState({}, document.title, "/");
 	if (user) {
 		$(".dashboard").show(transition);
 		$("main").hide(transition);
