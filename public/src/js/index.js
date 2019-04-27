@@ -98,7 +98,6 @@ function invite(id) {
 }
 
 socket.on("data", data => {
-	console.log(data);
 	gotLogin(data);
 });
 
@@ -274,6 +273,7 @@ function selectGuild(g) {
 						guild.config = config;
 						guild.id = g;
 						displaySettings(guild, body);
+						displayCommands(guild, body);
 					}
 				});
 			}

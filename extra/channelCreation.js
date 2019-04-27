@@ -22,8 +22,7 @@ module.exports.init = async function() {
 						.lockPermissions()
 						.then(x =>
 							console.log(
-								"Successfully synchronized permissions with parent channel",
-								x
+								"Successfully synchronized permissions with parent channel"
 							)
 						)
 						.catch(console.error);

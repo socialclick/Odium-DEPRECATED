@@ -131,6 +131,7 @@ app.get("/stats/", (req, res) => {
 	var data = {};
 
 	data.servers = client.guilds.size;
+	data.users = client.users.size;
 	data.channels = client.channels.size;
 	data.roles = 0;
 	data.uptime = Math.floor(client.uptime);

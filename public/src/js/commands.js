@@ -1,3 +1,7 @@
+function displayCommands() {
+	$("#sayRoleList").html("");
+}
+
 function say() {
 	var channel = $("#sayChannels")
 		.find("select")
@@ -15,7 +19,6 @@ function say() {
 			);
 		});
 
-	console.log(roles, channel);
 	$.get({
 		url:
 			"/api/guild/" +

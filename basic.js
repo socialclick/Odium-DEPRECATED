@@ -38,7 +38,29 @@ module.exports.init = fs => {
 };
 
 global.getConfig = function(g) {
-	return config.guilds.find(x => x.id == g.id);
+	if (!g) return;
+
+	var c = config.guilds.find(x => x.id == g.id);
+	if (c == undefined) {
+		c = config.guilds[config.guilds.push(new guildConfig(guild)) - 1];
+	} else {
+		client.commands.forEach((x, i) => {
+			if (x.settings) {
+				if (!c.commands[i]) {
+					c.commands[i] = x.settings;
+				}
+			}
+		});
+		client.extra.forEach((x, i) => {
+			if (x.settings) {
+				if (!c.extra[i]) {
+					c.extra[i] = x.settings;
+				}
+			}
+		});
+	}
+
+	return c;
 };
 
 global.send = function(channel, type, title, text, fields, thumbnail) {
@@ -74,7 +96,10 @@ global.send = function(channel, type, title, text, fields, thumbnail) {
 		.setThumbnail(thumbnail)
 		.setColor(color)
 		.setDescription(text)
-		.setAuthor(`${channel.guild.name}`, channel.guild.iconURL)
+		.setAuthor(
+			`${channel.guild ? channel.guild.name : client.user.username}`,
+			channel.guild ? channel.guild.iconURL : client.user.displayAvatarURL
+		)
 		.setFooter(
 			client.user.username + " Bot coded by NaCl-y#4400 & Flam3rboy#5979",
 			client.user.displayAvatarURL
@@ -84,5 +109,5 @@ global.send = function(channel, type, title, text, fields, thumbnail) {
 		message.fields = fields;
 	}
 
-	return channel.send(message).catch(e => console.log(e));
+	return channel.send(message);
 };

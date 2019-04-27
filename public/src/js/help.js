@@ -8,13 +8,16 @@ function getStats() {
 }
 
 function displayStats(stats) {
-	var text = "";
+	var text = "<table><thead><tr><td></td><td></td></tr></thead><tbody>";
 
-	text += "<h5>Servers: " + stats.servers + "</h5>";
-	text += "<h5>Channels: " + stats.channels + "</h5>";
-	text += "<h5>Roles: " + stats.roles + "</h5>";
-	text += "<h5>Uptime: " + msToTime(stats.uptime) + "</h5>";
-	text += "<h5>Ping: " + stats.ping + "ms</h5>";
+	text += "<tr><td>Servers:</td><td>" + stats.servers + "</td></tr>";
+	text += "<tr><td>Channels: </td><td>" + stats.channels + "</td></tr>";
+	text += "<tr><td>Users: </td><td>" + stats.users + "</td></tr>";
+	text += "<tr><td>Roles: </td><td>" + stats.roles + "</td></tr>";
+	text += "<tr><td>Uptime: </td><td>" + msToTime(stats.uptime) + "</td></tr>";
+	text += "<tr><td>Ping: </td><td>" + stats.ping + "ms</td></tr>";
+
+	text += "</tbody></table>";
 
 	$("#helpStats").html(text);
 }

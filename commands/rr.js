@@ -10,6 +10,9 @@ module.exports.init = () => {
 		});
 
 		client.on("messageReactionAdd", (reaction, user) => {
+			if (user.id == client.user.id) return;
+			if (!reaction.message.guild) return;
+
 			var c = getConfig(reaction.message.guild).commands[
 				"rr"
 			].listeners.find(rr => rr.msg == reaction.message.id);

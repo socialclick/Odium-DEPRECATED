@@ -70,15 +70,16 @@ function displaySettings(guild, body) {
 		});
 	});
 
+	$("#channelWelcomeMsg select").val(guild.config.extra.welcome.channel);
+	$("#channelLeaveMsg select").val(guild.config.extra.leave.channel);
+
 	$(".textchannels").selectpicker({
 		liveSearch: true,
 		style: "btn-outline-primary"
 	});
 
-	$("#channelWelcomeMsg").val(guild.config.extra.welcome.channel);
-	$("#channelLeaveMsg").val(guild.config.extra.leave.channel);
 	$("#channelCreationEnable")[0].checked =
-		guild.config.extra.channelCreation.active;
+		guild.config.extra.channelCreation.active == "true";
 	$("#channelCreationEnable").on("change", function(e) {
 		$.get({
 			url:
@@ -100,7 +101,7 @@ function displaySettings(guild, body) {
 	$("#welcomeMessageText").val(guild.config.extra.welcome.text);
 	$("#welcomeMessageEnable").attr(
 		"checked",
-		guild.config.extra.welcome.active
+		guild.config.extra.welcome.active == "true"
 	);
 	$("#welcomeMessageEnable").on("change", function(e) {
 		$.get({
@@ -120,7 +121,7 @@ function displaySettings(guild, body) {
 				Base64.encode(this.value)
 		});
 	});
-	$("#channelWelcomeMsg").on("change", function(e) {
+	$("#channelWelcomeMsg select").on("change", function(e) {
 		console.log("updated welcome Channel: " + this.value);
 		$.get({
 			url:
@@ -131,7 +132,10 @@ function displaySettings(guild, body) {
 		});
 	});
 	$("#leaveMessageText").val(guild.config.extra.leave.text);
-	$("#leaveMessageEnable").attr("checked", guild.config.extra.leave.active);
+	$("#leaveMessageEnable").attr(
+		"checked",
+		guild.config.extra.leave.active == "true"
+	);
 	$("#leaveMessageEnable").on("change", function(e) {
 		$.get({
 			url:
@@ -150,7 +154,7 @@ function displaySettings(guild, body) {
 				Base64.encode($("#leaveMessageText").val())
 		});
 	});
-	$("#channelLeaveMsg").on("change", function(e) {
+	$("#channelLeaveMsg select").on("change", function(e) {
 		$.get({
 			url:
 				"/api/guild/" +
