@@ -79,7 +79,7 @@ function displaySettings(guild, body) {
 	});
 
 	$("#channelCreationEnable")[0].checked =
-		guild.config.extra.channelCreation.active == "true";
+		guild.config.extra.channelCreation.active;
 	$("#channelCreationEnable").on("change", function(e) {
 		$.get({
 			url:

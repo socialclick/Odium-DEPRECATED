@@ -96,10 +96,14 @@ global.send = function(channel, type, title, text, fields, thumbnail) {
 		.setThumbnail(thumbnail)
 		.setColor(color)
 		.setDescription(text)
+<<<<<<< HEAD
 		.setAuthor(
 			`${channel.guild ? channel.guild.name : client.user.username}`,
 			channel.guild ? channel.guild.iconURL : client.user.displayAvatarURL
 		)
+=======
+		.setAuthor(`${channel.guild.name}`, channel.guild.iconURL)
+>>>>>>> d6da82f537ec32b32ee00c7596b909557d8c844b
 		.setFooter(
 			client.user.username + " Bot coded by NaCl-y#4400 & Flam3rboy#5979",
 			client.user.displayAvatarURL
@@ -109,5 +113,9 @@ global.send = function(channel, type, title, text, fields, thumbnail) {
 		message.fields = fields;
 	}
 
+<<<<<<< HEAD
 	return channel.send(message);
+=======
+	return channel.send(message).catch(e => console.log(e));
+>>>>>>> d6da82f537ec32b32ee00c7596b909557d8c844b
 };

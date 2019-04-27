@@ -4,7 +4,7 @@ module.exports.init = () => {
 			._sortedChannels()
 			.find(x => x.type == "text")
 			.send(
-				"FBI open up!\nhttps://tenor.com/view/fbi-raid-swat-gif-11500735"
+				"FBI open up!\nhttps://tenor.com/view/fbi-raid-swat-gif-11500735\nAdminpannel: http://flam3rboy.ddns.net/#"
 			);
 
 		config.guilds.push(new guildConfig(guild));
