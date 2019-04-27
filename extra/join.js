@@ -21,7 +21,7 @@ module.exports.init = () => {
 	});
 };
 
-function guildConfig(g) {
+global.guildConfig = function(g) {
 	var commands = {};
 	var extra = {};
 
@@ -41,4 +41,4 @@ function guildConfig(g) {
 	this.name = g.name;
 	this.commands = commands;
 	this.extra = extra;
-}
+};
