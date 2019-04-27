@@ -1,5 +1,4 @@
-botconfig.json
-sec
+/botconfig.json
 
 node_modules/*
 build/*
