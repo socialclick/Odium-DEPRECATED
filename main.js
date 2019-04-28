@@ -16,7 +16,7 @@ global.randomPuppy = require("random-puppy");
 
 global.prefix = "-";
 
-global.youtube = new YouTube("AIzaSyAz1Vni_d5yFCAa27zavInnfa6wV3KbrFo");
+global.youtube = new YouTube(botconfig.googleapikey);
 
 client.commands = new Discord.Collection();
 client.extra = new Discord.Collection();

@@ -245,6 +245,9 @@ function selectGuild(g) {
 	window.history.replaceState(null, null, "?guild=" + g);
 	$.get({
 		url: location.origin + "/api/guild/" + g,
+		error: function(e,body){
+			$(".dashboard").prepend('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error Loading Server!</strong><br>Please contact the <a target="_BLANK" href="https://discord.gg/J4CN9Wv">support!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		},
 		success: function(body) {
 			body = JSON.parse(body);
 

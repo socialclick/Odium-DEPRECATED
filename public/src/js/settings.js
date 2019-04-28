@@ -1,10 +1,9 @@
 function displaySettings(guild, body) {
 	var newchannelorder = [];
-	var textchannels = "";
+	var textchannels;
 	var lastcategory = "";
 	var roles = generateRoles(body.roles);
 
-	$("#sayRoles").html("<option value='none'>- None -</option>" + roles);
 	$("#settings > h3").html("Settings - " + guild.name);
 	$(".roles").html(roles);
 
@@ -39,6 +38,8 @@ function displaySettings(guild, body) {
 			.filter(t => t.parentID == c.id)
 			.forEach(t => newchannelorder.push(t));
 	});
+
+	textchannels = "<option value=''>- No Channel -</option>";
 
 	newchannelorder.forEach(x => {
 		if (lastcategory != x.name && x.type == "category") {

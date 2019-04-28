@@ -93,14 +93,61 @@ app.get("/guild/:id/cmd/", (req, res) => {
 	res.send("true");
 });
 
-app.get("/guild/:id/:channel/", (req, res) => {
+app.get("/guild/:id/channel/:channel/messages", (req, res) => {
 	var g = client.guilds.get(req.params.id);
 	if (g == undefined) return res.send("error: undefined Guild");
 	var c = g.channels.get(req.params.channel);
 	if (c == undefined) return res.send("error: undefined Channel");
 
 	c.fetchMessages({ limit: 100 }).then(x => {
-		res.send(JSON.stringify(x.array()));
+		var data = [];
+
+		x.array().forEach(x => {
+			var a = [];
+			x.attachments.array().forEach(y => a.push(y.url));
+			var reactions = [];
+
+			x.reactions.array().forEach(r => {
+				reactions.push({
+					count: r.count,
+					emoji: r.emoji.name,
+					url: r.emoji.url
+				});
+			});
+
+			if (x.embeds[0]) {
+				data.push({
+					id: x.id,
+					createdTimestamp: x.createdTimestamp,
+					content:
+						"<h5>" +
+						x.embeds[0].title +
+						"</h5>" +
+						x.embeds[0].description,
+					author: {
+						tag: x.author.tag,
+						avatar: x.author.displayAvatarURL
+					},
+					attachments: a,
+					reactions: reactions
+				});
+			} else {
+				data.push({
+					id: x.id,
+					createdTimestamp: x.createdTimestamp,
+					content: x.content,
+					author: {
+						tag: x.author.tag,
+						avatar: x.author.displayAvatarURL
+					},
+					attachments: a,
+					reactions: reactions
+				});
+			}
+			return x;
+		});
+
+		res.send(JSON.stringify(data));
 	});
 });
 
