@@ -6,12 +6,13 @@
     -report System ✅
     -ban, clear, help, kick, warn ✅
     -mute ✅
-    -invite msg
+    -invite msg ✅
     -leave msg ✅
     -tryout
           
   Samuel:
     -channelcreation ✅
+    -reaction creation ✅
     -info (user, server, role, bot)  ✅
     -nutzer aktivität
     -partner system
@@ -23,7 +24,6 @@ ____________________
 
 other functions:
 -fn bot
--reaction creation
 -backup
 -anti grief/hack
 -levelsystem
